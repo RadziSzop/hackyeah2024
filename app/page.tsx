@@ -80,6 +80,7 @@ export default function Component() {
               muted
               playsInline
               poster="/placeholder.svg?height=720&width=1280"
+              disablePictureInPicture={true}
             >
               <source
                 src="https://cdn.discordapp.com/attachments/438706496616792077/1289607355818049578/jakischuj.mp4?ex=66f96ff1&is=66f81e71&hm=b2ab62cb2782e94ec9ace850b080f6b1128ec1e85e76fa46d993426b3d8f3d73&"
