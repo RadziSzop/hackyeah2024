@@ -34,9 +34,9 @@ export default function Component() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col w-full pt-16 h-[calc(100vh-72px)]">
+    <div className="flex flex-col w-full pt-16 h-screen overflow-hidden">
       <div className="flex-grow flex flex-col lg:flex-row relative">
-        <aside className="lg:w-1/4 bg-blue-50 p-6 lg:min-h-screen lg:sticky lg:top-0">
+        <aside className="lg:w-1/4 bg-blue-50 p-6 lg:sticky lg:top-0">
           <h3 className="text-2xl font-semibold mb-6 text-blue-950">
             Simple Steps to File Your Taxes
           </h3>
@@ -90,7 +90,7 @@ export default function Component() {
             <div className="absolute inset-0 bg-blue-950 bg-opacity-75"></div>
           </div>
 
-          <div className="relative z-10 min-h-screen flex flex-col justify-between p-6 text-white">
+          <div className="relative z-10 h-full flex flex-col justify-between p-6 text-white">
             <section className="text-center mb-12 pt-12">
               <h2 className="text-4xl font-bold mb-4">
                 Official Government Tax Assistant

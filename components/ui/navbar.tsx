@@ -2,7 +2,7 @@ import { Button } from "./button";
 
 export default function Navbar() {
   return (
-    <div className="min-h-screen flex flex-col w-full fixed z-10">
+    <div className="flex flex-col w-full fixed z-10">
       <header className="bg-blue-950 text-white">
         <div className="mx-auto px-4 py-4">
           <nav className="flex justify-between items-center">
