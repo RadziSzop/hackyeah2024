@@ -24,7 +24,6 @@ export default function TempForm() {
   const onSubmit = (data: FormData) => console.log(data);
   const natural_person = watch("natural_person");
   const isPESEL = watch("data.isPESEL");
-  console.log(errors);
 
   return (
     <div className="flex-grow pr-4">
@@ -67,17 +66,16 @@ export default function TempForm() {
               <Label htmlFor="NIP">NIP</Label>
               <Input
                 className={
-                  errors.data && "data.NIP" in errors.data
-                    ? "border-red-500"
-                    : ""
+                  errors.data && "NIP" in errors.data ? "border-red-500" : ""
                 }
                 type="text"
                 id="NIP"
                 {...register("data.NIP")}
               />
-              {errors.data && "data.NIP" in errors.data && (
+              {errors?.data && "NIP" in errors?.data && (
                 <p className="text-red-500">
-                  {(errors.data.NIP as FieldError)?.message?.toString()}
+                  aa
+                  {errors.data?.NIP?.message?.toString()}
                 </p>
               )}
             </div>
@@ -85,7 +83,7 @@ export default function TempForm() {
               <Label htmlFor="full_name">Full Name</Label>
               <Input
                 className={
-                  errors.data && "data.full_name" in errors.data
+                  errors.data && "full_name" in errors.data
                     ? "border-red-500"
                     : ""
                 }
@@ -93,9 +91,9 @@ export default function TempForm() {
                 id="full_name"
                 {...register("data.full_name")}
               />
-              {errors.data && "data.full_name" in errors.data && (
+              {errors.data && "full_name" in errors.data && (
                 <p className="text-red-500">
-                  {(errors.data.full_name as FieldError)?.message?.toString()}
+                  {(errors?.data?.full_name as FieldError)?.message?.toString()}
                 </p>
               )}
             </div>
@@ -103,7 +101,7 @@ export default function TempForm() {
               <Label htmlFor="short_name">Short Name</Label>
               <Input
                 className={
-                  errors.data && "data.short_name" in errors.data
+                  errors.data && "short_name" in errors.data
                     ? "border-red-500"
                     : ""
                 }
@@ -111,7 +109,7 @@ export default function TempForm() {
                 id="short_name"
                 {...register("data.short_name")}
               />
-              {errors.data && "data.short_name" in errors.data && (
+              {errors.data && "short_name" in errors.data && (
                 <p className="text-red-500">
                   {(errors.data.short_name as FieldError)?.message?.toString()}
                 </p>
@@ -155,7 +153,7 @@ export default function TempForm() {
               <Label htmlFor="first_name">First Name</Label>
               <Input
                 className={
-                  errors.data && "first_name" in errors.data
+                  errors.data.data && "first_name" in errors.data.data
                     ? "border-red-500"
                     : ""
                 }
@@ -163,9 +161,11 @@ export default function TempForm() {
                 id="first_name"
                 {...register("data.data.first_name")}
               />
-              {errors.data && "first_name" in errors.data && (
+              {errors.data.data && "first_name" in errors.data.data && (
                 <p className="text-red-500">
-                  {(errors.data.first_name as FieldError)?.message?.toString()}
+                  {(
+                    errors.data.data.first_name as FieldError
+                  )?.message?.toString()}
                 </p>
               )}
             </div>
@@ -173,7 +173,7 @@ export default function TempForm() {
               <Label htmlFor="last_name">Last Name</Label>
               <Input
                 className={
-                  errors.data && "last_name" in errors.data
+                  errors.data.data && "last_name" in errors.data.data
                     ? "border-red-500"
                     : ""
                 }
@@ -181,9 +181,11 @@ export default function TempForm() {
                 id="last_name"
                 {...register("data.data.last_name")}
               />
-              {errors.data && "last_name" in errors.data && (
+              {errors.data.data && "last_name" in errors.data.data && (
                 <p className="text-red-500">
-                  {(errors.data.last_name as FieldError)?.message?.toString()}
+                  {(
+                    errors.data.data.last_name as FieldError
+                  )?.message?.toString()}
                 </p>
               )}
             </div>
@@ -191,7 +193,7 @@ export default function TempForm() {
               <Label htmlFor="date_of_birth">Date of Birth</Label>
               <Input
                 className={
-                  errors.data && "date_of_birth" in errors.data
+                  errors.data.data && "date_of_birth" in errors.data.data
                     ? "border-red-500"
                     : ""
                 }
@@ -199,10 +201,10 @@ export default function TempForm() {
                 id="date_of_birth"
                 {...register("data.data.date_of_birth")}
               />
-              {errors.data && "date_of_birth" in errors.data && (
+              {errors.data.data && "date_of_birth" in errors.data.data && (
                 <p className="text-red-500">
                   {(
-                    errors.data.date_of_birth as FieldError
+                    errors.data.data.date_of_birth as FieldError
                   )?.message?.toString()}
                 </p>
               )}
@@ -211,7 +213,7 @@ export default function TempForm() {
               <Label htmlFor="father_name">Father Name</Label>
               <Input
                 className={
-                  errors.data && "father_name" in errors.data
+                  errors.data.data && "father_name" in errors.data.data
                     ? "border-red-500"
                     : ""
                 }
@@ -219,9 +221,11 @@ export default function TempForm() {
                 id="father_name"
                 {...register("data.data.father_name")}
               />
-              {errors.data && "father_name" in errors.data && (
+              {errors.data.data && "father_name" in errors.data.data && (
                 <p className="text-red-500">
-                  {(errors.data.father_name as FieldError)?.message?.toString()}
+                  {(
+                    errors.data.data.father_name as FieldError
+                  )?.message?.toString()}
                 </p>
               )}
             </div>
@@ -229,7 +233,8 @@ export default function TempForm() {
               <Label htmlFor="mother_name">Mother Name</Label>
               <Input
                 className={
-                  errors.data && "data.data.mother_name" in errors.data
+                  errors.data.data &&
+                  "data.data.mother_name" in errors.data.data
                     ? "border-red-500"
                     : ""
                 }
@@ -237,9 +242,11 @@ export default function TempForm() {
                 id="mother_name"
                 {...register("data.data.mother_name")}
               />
-              {errors.data && "data.data.mother_name" in errors.data && (
+              {errors?.data?.data && "mother_name" in errors?.data?.data && (
                 <p className="text-red-500">
-                  {(errors.data.mother_name as FieldError)?.message?.toString()}
+                  {(
+                    errors?.data?.data?.mother_name as FieldError
+                  )?.message?.toString()}
                 </p>
               )}
             </div>
@@ -257,9 +264,11 @@ export default function TempForm() {
                   id="PESEL"
                   {...register("data.data.PESEL")}
                 />
-                {errors.data && "data.data.PESEL" in errors.data && (
+                {errors.data.data && "PESEL" in errors.data.data && (
                   <p className="text-red-500">
-                    {(errors.data.PESEL as FieldError)?.message?.toString()}
+                    {(
+                      errors.data.data.PESEL as FieldError
+                    )?.message?.toString()}
                   </p>
                 )}
               </div>
@@ -268,17 +277,17 @@ export default function TempForm() {
                 <Label htmlFor="NIP">NIP</Label>
                 <Input
                   className={
-                    errors.data && "data.NIP" in errors.data
+                    errors.data.data && "NIP" in errors.data.data
                       ? "border-red-500"
                       : ""
                   }
                   type="text"
                   id="NIP"
-                  {...register("data.NIP")}
+                  {...register("data.data.NIP")}
                 />
-                {errors.data && "data.NIP" in errors.data && (
+                {errors.data.data && "NIP" in errors.data.data && (
                   <p className="text-red-500">
-                    {(errors.data.NIP as FieldError)?.message?.toString()}
+                    {(errors.data.data.NIP as FieldError)?.message?.toString()}
                   </p>
                 )}
               </div>
