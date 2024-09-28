@@ -34,7 +34,7 @@ export default function Component() {
   };
 
   return (
-    <div className="flex flex-col w-full pt-16 h-screen overflow-hidden">
+    <div className="flex flex-col w-full h-full overflow-hidden">
       <div className="flex-grow flex flex-col lg:flex-row relative">
         <aside className="lg:w-1/4 bg-blue-50 p-6 lg:sticky lg:top-0">
           <h3 className="text-2xl font-semibold mb-6 text-blue-950">
