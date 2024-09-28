@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import Link from "next/link";
 
 export default function Component() {
   const [messages, setMessages] = useState([
@@ -98,13 +98,15 @@ export default function Component() {
               <p className="text-xl mb-8">
                 Otrzymaj indywidualną pomoc i złóż swoje podatki z pewnością
               </p>
-              <Button
-                size="lg"
-                onClick={() => console.log("clicked")}
-                className="bg-red-700 hover:bg-red-800 text-white"
-              >
-                Zacznij teraz
-              </Button>
+              <Link href="/sign-in">
+                <Button
+                  size="lg"
+                  onClick={() => console.log("clicked")}
+                  className="bg-red-700 hover:bg-red-800 text-white"
+                >
+                  Zacznij teraz
+                </Button>
+              </Link>
             </section>
 
             <section className="bg-blue-900 bg-opacity-50 p-6 rounded-lg backdrop-blur-sm">
