@@ -25,7 +25,7 @@ export default function Navbar() {
               variant="outline"
               className="bg-white text-blue-950 hover:bg-blue-100"
             >
-              Login
+              Zaloguj się
             </Button>
           </nav>
         </div>
