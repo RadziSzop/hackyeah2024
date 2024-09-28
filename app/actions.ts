@@ -4,7 +4,7 @@ import { encodedRedirect } from "@/utils/utils";
 import { createClient } from "@/utils/supabase/server";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { generateText, streamObject, streamText } from 'ai'
+import { generateText, streamObject, streamText, tool } from 'ai'
 import { openAI } from "@/utils/ai";
 import { z } from "zod";
 
@@ -81,20 +81,26 @@ export const askAI = async (formData: FormData) => {
   }
 
   const prompt = formData.get("prompt") as string;
-  const chunkCluster = Array<string>();
 
   const result = await generateText({
     model: model,
     prompt: prompt,
-
-    // onChunk({ chunk }) {
-    //   if (chunk.type === "text-delta") {
-    //     chunkCluster.push(chunk.textDelta)
-    //     console.log(chunk)
-    //   }
-    // }
+    tools: {
+      problem: tool({
+        description: "Get the problem of the user",
+        parameters: z.object({
+          problem: z.string().describe("The main problem of the sentence given by the user")
+        }),
+        execute: async ({ problem }) => ({
+          problem
+        })
+      })
+    },
+    maxSteps: 5,
+    toolChoice: "required",
   })
 
+  console.log(result.toolResults)
   console.log(result.text)
   return
 };
