@@ -4,11 +4,41 @@ import { encodedRedirect } from "@/utils/utils";
 import { createClient } from "@/utils/supabase/server";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { streamObject, streamText } from "ai";
-import { anthropic } from "@/utils/ai";
+import { generateText, streamObject, streamText } from 'ai'
+import { openAI } from "@/utils/ai";
 import { z } from "zod";
 
-const model = anthropic("claude-3-5-sonnet-20240620");
+const model = openAI('gpt-4o-mini-2024-07-18')
+
+export const signUpAction = async (formData: FormData) => {
+  const email = formData.get("email")?.toString();
+  const password = formData.get("password")?.toString();
+  const supabase = createClient();
+  const origin = headers().get("origin");
+
+  if (!email || !password) {
+    return { error: "Email and password are required" };
+  }
+
+  const { error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      emailRedirectTo: `${origin}/auth/callback`,
+    },
+  });
+
+  if (error) {
+    console.error(error.code + " " + error.message);
+    return encodedRedirect("error", "/sign-up", error.message);
+  } else {
+    return encodedRedirect(
+      "success",
+      "/sign-up",
+      "Thanks for signing up! Please check your email for a verification link."
+    );
+  }
+};
 
 export const signInAction = async (formData: FormData) => {
   const email = formData.get("email") as string;
@@ -53,16 +83,18 @@ export const askAI = async (formData: FormData) => {
   const prompt = formData.get("prompt") as string;
   const chunkCluster = Array<string>();
 
-  const result = await streamText({
+  const result = await generateText({
     model: model,
     prompt: prompt,
-    onChunk({ chunk }) {
-      if (chunk.type === "text-delta") {
-        chunkCluster.push(chunk.textDelta);
-        console.log(chunk);
-      }
-    },
-  });
 
-  return chunkCluster;
+    // onChunk({ chunk }) {
+    //   if (chunk.type === "text-delta") {
+    //     chunkCluster.push(chunk.textDelta)
+    //     console.log(chunk)
+    //   }
+    // }
+  })
+
+  console.log(result.text)
+  return
 };

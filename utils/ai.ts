@@ -1,5 +1,5 @@
-import { createAnthropic } from '@ai-sdk/anthropic';
+import { createOpenAI } from '@ai-sdk/openai';
 
-export const anthropic = createAnthropic({
+export const openAI = createOpenAI({
   // custom settings
 });
