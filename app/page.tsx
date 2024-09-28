@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 export default function Component() {
-  const [chatOpen, setChatOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
       role: "assistant",
@@ -101,7 +100,7 @@ export default function Component() {
               </p>
               <Button
                 size="lg"
-                onClick={() => setChatOpen(true)}
+                onClick={() => console.log("clicked")}
                 className="bg-red-700 hover:bg-red-800 text-white"
               >
                 Zacznij teraz
@@ -127,53 +126,6 @@ export default function Component() {
           </div>
         </main>
       </div>
-
-      {chatOpen && (
-        <div className="fixed bottom-4 right-4 w-96 h-[500px] bg-white rounded-lg shadow-xl flex flex-col border-2 border-blue-950 z-50">
-          <div className="p-4 bg-blue-950 text-white rounded-t-lg flex justify-between items-center">
-            <h5 className="font-semibold">Oficialny Asysten Podatkowy</h5>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setChatOpen(false)}
-              className="text-white hover:bg-blue-900"
-            >
-              Close
-            </Button>
-          </div>
-          <div className="flex-grow overflow-auto p-4 space-y-4">
-            {messages.map((message, index) => (
-              <div
-                key={index}
-                className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
-              >
-                <div
-                  className={`max-w-[80%] p-3 rounded-lg ${message.role === "user" ? "bg-blue-100" : "bg-gray-100"}`}
-                >
-                  {message.content}
-                </div>
-              </div>
-            ))}
-          </div>
-          <form onSubmit={sendMessage} className="p-4 border-t border-gray-200">
-            <div className="flex space-x-2">
-              <Input
-                type="text"
-                placeholder="Type your message..."
-                value={inputMessage}
-                onChange={(e) => setInputMessage(e.target.value)}
-                className="flex-grow"
-              />
-              <Button
-                type="submit"
-                className="bg-red-700 hover:bg-red-800 text-white"
-              >
-                Send
-              </Button>
-            </div>
-          </form>
-        </div>
-      )}
     </div>
   );
 }
