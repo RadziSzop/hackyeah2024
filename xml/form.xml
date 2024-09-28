@@ -114,23 +114,67 @@
     <P_42>19</P_42>
 
     <!-- ZESTAW 8 -->
-     
-
+    <!-- P43A DOPUSZCZALNE OPCJE: -->
+    <!-- Umowa dożywocia -->
+    <!-- Umowa o dział spadku - w części spłat lub dopłat -->
+    <!-- Umowa o zniesienie współwłasności - w części spłat lub dopłat -->
+    <!-- Orzeczenie sądu -->
+    <P_43A>Orzeczenie sądu</P_43A>
+    <P_43>1000</P_43>
+    <!-- P44 przyjmuje wartości 1 i 2, chyba, że w P_43A wybrano Orzeczenie sądu, to może też przyjąć 6% -->
+    <P_44>2</P_44>
+    <!-- P45 = P43 * P44 / 100 -->
+    <P_45>20</P_45>
 
     <!-- Kwota należnego podatku (suma wszystkich obliczonych podatków z wybranego zestawu -->
     <!-- np. dla zestawu 1 jest to P25+P27, dla zestawu 2 to P30 -->
     <P_46>1</P_46>
 
+    <!-- Sekcja E -->
+    <!-- Przypominam, albo sekcja D, albo E -->
+    
+    <!-- Możliwe opcje dla P47 -->
+    <!-- 1: spółka osobowa -->
+    <!-- 2: spółka kapitałowa -->
     <P_47>2</P_47>
+    <!-- Możliwe opcje dla P48 -->
+    <!-- 1: zawarcia umowy spółki -->
+    <!-- 2: zwiększenia majątku spółki albo podwyższenia kapitału zakładowego -->
+    <!-- 3: dopłaty -->
+    <!-- 4: pożyczki udzielonej spółce osobowej przez wspólnika -->
+    <!-- 5: oddania spółce rzeczy lub praw majątkowych do nieodpłatnego używania -->
+    <!-- 6: przekształcenia spółek -->
+    <!-- 7: łączenia spółek -->
+    <!-- 8: przeniesienia na terytorium Rzeczypospolitej Polskiej rzeczywistego ośrodka zarządzania spółki kapitałowej lub jej siedziby -->
+    <P_48>1</P_48>
+    <P_49>1010</P_49>
+    <P_50>10</P_50>
+    <P_51>1000</P_51>
+    <!-- Podatek obliczony według stawki określonej w art. 7 ust. 1 pkt 9 ustawy od podstawy z poz. 51, po zaokrągleniu do pełnych złotych -->
+    <P_52>5</P_52>
+
+    <!-- Sekcja F -->
+    <!-- Pełna kwota podatku, równa P46 lub P52 -->
     <P_53>0</P_53>
+
+    <!-- Sekcja G -->
+    <!-- Informacje dodatkowe -->
+    <!-- Skonsultować z notką w sekcji G -->
     <P_54>LUBUSKIE</P_54>
     <P_55>GORZOWSKI</P_55>  
     <P_56>DESZCZNO</P_56>
+    <P_57></P_57> <!-- OPCJONALNE -->
     <P_58>2323</P_58>
+    <P_59></P_59> <!-- OPCJONALNE -->
     <P_60>ASDFASDF</P_60>
     <P_61>12-324</P_61>
+
+    <!-- Sekcja H -->
+    <!-- Liczba załączników -->
     <P_62>0</P_62>
+
   </PozycjeSzczegolowe>
+  <!-- To obowiązkowe V -->
   <Pouczenia>1</Pouczenia>
 <!-- TO PONIZEJ SIE ROBI TYLKO WTEDY, GDY w CELU ZŁOŻENIA DA SIĘ KOREKTĘ DEKLARACJI -->
   <Zalaczniki>
