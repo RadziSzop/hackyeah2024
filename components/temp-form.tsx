@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldError, useForm } from "react-hook-form";
@@ -15,6 +16,7 @@ export default function TempForm() {
     handleSubmit,
     watch,
     formState: { errors },
+    setValue,
   } = useForm<FormData>({
     resolver: zodResolver(finalUnion),
   });
@@ -27,13 +29,36 @@ export default function TempForm() {
     <div className="flex-grow pr-4">
       <h2 className="text-2xl font-semibold mb-4 text-blue-950">Tax Form</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <Label htmlFor="natural_person">Is Natural Person</Label>
-          <Input
-            type="checkbox"
-            id="natural_person"
-            {...register("natural_person")}
-          />
+        <div className="mb-4">
+          <Label>Is Natural Person</Label>
+          <RadioGroup
+            className="flex gap-4"
+            onValueChange={(value) =>
+              setValue("natural_person", value === "true")
+            }
+            defaultValue={natural_person ? "true" : "false"}
+          >
+            <div className="flex items-center space-x-3">
+              <RadioGroupItem
+                value="true"
+                id="natural_person_true"
+                className="w-5 h-5"
+              />
+              <Label htmlFor="natural_person_true" className="text-lg">
+                Osoba fizyczna
+              </Label>
+            </div>
+            <div className="flex items-center space-x-3">
+              <RadioGroupItem
+                value="false"
+                id="natural_person_false"
+                className="w-5 h-5"
+              />
+              <Label htmlFor="natural_person_false" className="text-lg">
+                Podmiot nie będący osobą fizyczną
+              </Label>
+            </div>
+          </RadioGroup>
         </div>
         {!natural_person ? (
           <>
@@ -93,13 +118,36 @@ export default function TempForm() {
           </>
         ) : (
           <>
-            <div>
-              <Label htmlFor="isPESEL">Is PESEL</Label>
-              <Input
-                type="checkbox"
-                id="isPESEL"
-                {...register("data.isPESEL")}
-              />
+            <div className="mb-4">
+              <Label>Is PESEL</Label>
+              <RadioGroup
+                className="flex gap-4"
+                onValueChange={(value) =>
+                  setValue("data.isPESEL", value === "true")
+                }
+                defaultValue={isPESEL ? "true" : "false"}
+              >
+                <div className="flex items-center space-x-3">
+                  <RadioGroupItem
+                    value="true"
+                    id="isPESEL_true"
+                    className="w-5 h-5"
+                  />
+                  <Label htmlFor="isPESEL_true" className="text-lg">
+                    PESEL
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <RadioGroupItem
+                    value="false"
+                    id="isPESEL_false"
+                    className="w-5 h-5"
+                  />
+                  <Label htmlFor="isPESEL_false" className="text-lg">
+                    NIP
+                  </Label>
+                </div>
+              </RadioGroup>
             </div>
             <div>
               <Label htmlFor="first_name">First Name</Label>
