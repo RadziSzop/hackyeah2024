@@ -29,7 +29,9 @@ export default function RootLayout({
         >
           <main className="min-h-screen flex flex-col items-center">
             <Navbar />
-            {children}
+            <div className="h-[calc(100vh-72px)] mt-auto w-screen">
+              {children}
+            </div>
           </main>
         </ThemeProvider>
       </body>
