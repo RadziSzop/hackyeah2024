@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vvv TO JEST ZAWSZE -->
+<Deklaracja xmlns="http://crd.gov.pl/wzor/2023/12/13/13064/">
+  <Naglowek>
+    <KodFormularza kodSystemowy="PCC-3 (6)" kodPodatku="PCC" rodzajZobowiazania="Z" wersjaSchemy="1-0E">PCC-3</KodFormularza>
+    <WariantFormularza>6</WariantFormularza>
+<!-- ^^^ TO JEST ZAWSZE -->
+
+<!-- 1 złożenie deklaracji, 2 korekta deklaracji (patrz sekcja załączników na samym dole) -->
+    <CelZlozenia poz="P_6">2</CelZlozenia>
+<!-- Data dokonania czynności -->
+    <Data poz="P_4">2024-09-12</Data>
+<!-- Kod urzędu, do którego jest adresowana deklaracja (urząd wybierany z listy, kody z bazy danych) -->
+    <KodUrzedu>0271</KodUrzedu>
+  </Naglowek>
+
+<!-- VVV TO ZAWSZE -->
+  <Podmiot1 rola="Podatnik">
+    <!-- Tutaj zależnie od tego, czy wybierzemy firmę, czy osobę fizyczną, będzie odpowiednio wariant 1 lub wariant 2 -->
+    <!-- WARIANT 1 -->
+    <OsobaFizyczna>
+      <PESEL>02271907259</PESEL>
+      <ImiePierwsze>JAKUB</ImiePierwsze>
+      <Nazwisko>JAKUB</Nazwisko>
+      <DataUrodzenia>2002-07-19</DataUrodzenia>
+    </OsobaFizyczna>
+    <!-- WARIANT 2 -->
+    <OsobaNiefizyczna>
+      <!-- Albo NIP, albo PESEL, (NIE OBA) zależnie od tego, co użytkownik wybierze -->
+      <NIP>1234563218</NIP>
+      <PESEL>02271907259</PESEL>
+
+      <PelnaNazwa>NAZWA PELNA</PelnaNazwa>
+      <SkroconaNazwa>NAZWA SKROCONA</SkroconaNazwa>
+    </OsobaNiefizyczna>
+
+    <!-- TO ZAWSZE -->
+    <AdresZamieszkaniaSiedziby rodzajAdresu="RAD">
+      <AdresPol>
+        <KodKraju>PL</KodKraju>
+        <Wojewodztwo>DOLNOŚLĄSKIE</Wojewodztwo>
+        <Powiat>GÓROWSKI</Powiat>
+        <Gmina>GÓRA</Gmina>
+        <NrDomu>2137</NrDomu>
+        <Miejscowosc>BRUHOWICE DOLNE</Miejscowosc>
+        <KodPocztowy>21-362</KodPocztowy>
+      </AdresPol>
+    </AdresZamieszkaniaSiedziby>
+  </Podmiot1>
+
+  <!-- Wszystki szczegóły na temat poszczególnych pól konsultować z tym, bo nie będę wszystkich wypisywał: -->
+  <!-- https://www.podatki.gov.pl/media/9731/pcc-3-06-08.pdf -->
+  <PozycjeSzczegolowe>
+    <!-- PODMIOT SKŁADAJĄCY DEKLARACJĘ 1-5 -->
+    <!-- 4 niepowinna być dostępna, gdy wybierze się firmę zamiast osoby fizycznej, ale to chyba AI ogarnie -->
+    <P_7>1</P_7>
+
+    <!-- Sekcja C -->
+    <!-- Wszystko stąd musi być -->
+    <P_20>4</P_20>
+    <P_21>2</P_21>
+    <P_22>2</P_22>
+    <P_23>bruhmoment</P_23>
+
+    <!-- ALBO SEKCJA D, ALBO SEKCJA E, NIE MOŻNA OBU NA RAZ -->
+    <!-- Sekcja D -->
+    <!-- Osiem różnych czynności cywilnoprawnych, zależnie od wybranej dostajesz odpowiedni zestaw -->
+
+    <!-- WSZYSTKIE NUMERKI ZAOKRĄGLAĆ DO CAŁOŚCI -->
+
+    <!-- ZESTAW 1 -->
+    <P_24>100</P_24>
+    <!-- P25 to 1% wartości z P24 -->
+    <P_25>1</P_25>
+    <P_26>100</P_26>
+    <!-- P27 to 2% wartości z P26 -->
+    <P_27>2</P_27>
+  
+    <!-- ZESTAW 2 -->
+    <P_28>100</P_28>
+    <!-- P29 przyjmuje wartość 1 lub 2 -->
+    <P_29>1</P_29>
+    <!-- P30 to P28 * P29 / 100 -->
+    <P_30>1</P_30>
+
+    <!-- ZESTAW 3 -->
+    <P_31>100</P_31>
+    <!-- P32 przyjmuje wartości: 0, 0.5, 2, 20 -->
+    <P_32>2</P_32>
+    <!-- P33 to P31 * P32 / 100 -->
+    <P_33>2</P_33>
+
+    <!-- ZESTAW 4 -->
+    <P_34>100</P_34>
+    <!-- P35 przyjmuje wartości: 1, 2 -->
+    <P_35>2</P_35>
+    <!-- P36 to P34 * P35 / 100 -->
+    <P_36>2</P_36>
+
+    <!-- ZESTAW 5 -->
+    <P_37>100</P_37>
+    <!-- P38: 1 lub 20 -->
+    <P_38>20</P_38>
+    <!-- P39: P37 * P38 / 100 -->
+    <P_39></P_39>
+
+    <!-- ZESTAW 6 -->
+    <P_40>500</P_40>
+    <!-- P41 = P40 / 1000 -->
+    <P_41>1</P_41>
+
+    <!-- ZESTAW 7 -->
+    <!-- 19 ZAWSZE -->
+    <P_42>19</P_42>
+
+    <!-- ZESTAW 8 -->
+     
+
+
+    <!-- Kwota należnego podatku (suma wszystkich obliczonych podatków z wybranego zestawu -->
+    <!-- np. dla zestawu 1 jest to P25+P27, dla zestawu 2 to P30 -->
+    <P_46>1</P_46>
+
+    <P_47>2</P_47>
+    <P_53>0</P_53>
+    <P_54>LUBUSKIE</P_54>
+    <P_55>GORZOWSKI</P_55>  
+    <P_56>DESZCZNO</P_56>
+    <P_58>2323</P_58>
+    <P_60>ASDFASDF</P_60>
+    <P_61>12-324</P_61>
+    <P_62>0</P_62>
+  </PozycjeSzczegolowe>
+  <Pouczenia>1</Pouczenia>
+<!-- TO PONIZEJ SIE ROBI TYLKO WTEDY, GDY w CELU ZŁOŻENIA DA SIĘ KOREKTĘ DEKLARACJI -->
+  <Zalaczniki>
+    <zzu:Zalacznik_ORD-ZU>
+      <zzu:Naglowek>
+        <zzu:KodFormularza kodSystemowy="ORD-ZU (3)" wersjaSchemy="10-0E">ORD-ZU</zzu:KodFormularza>
+        <zzu:WariantFormularza>3</zzu:WariantFormularza>
+      </zzu:Naglowek>
+      <zzu:PozycjeSzczegolowe>
+        <!-- Uzasadnienie przyczyny korekty -->
+        <zzu:P_13>testtesttest</zzu:P_13>
+      </zzu:PozycjeSzczegolowe>
+    </zzu:Zalacznik_ORD-ZU>
+  </Zalaczniki>
+</Deklaracja>
