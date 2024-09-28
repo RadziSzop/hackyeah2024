@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "./button";
 
 export default function Navbar() {
@@ -21,12 +22,14 @@ export default function Navbar() {
               </svg>
               <h1 className="text-2xl font-bold">GovTaxAssist</h1>
             </div>
-            <Button
-              variant="outline"
-              className="bg-white text-blue-950 hover:bg-blue-100"
-            >
-              Zaloguj się
-            </Button>
+            <Link href="/sign-in">
+              <Button
+                variant="outline"
+                className="bg-white text-blue-950 hover:bg-blue-100"
+              >
+                Zaloguj się
+              </Button>
+            </Link>
           </nav>
         </div>
       </header>
