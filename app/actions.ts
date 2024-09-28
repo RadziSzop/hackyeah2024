@@ -136,7 +136,6 @@ export const signOutAction = async () => {
 
 export const askAI = async (formData: FormData) => {
   const supabase = createClient();
-  const question = formData.get("question") as string;
   const user = supabase.auth.getUser();
 
   if (!user) {
