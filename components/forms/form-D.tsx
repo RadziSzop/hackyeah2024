@@ -180,21 +180,406 @@ export default function FormC() {
             </div>
           </RadioGroup>
         </div>
+        {type_of_transaction ===
+          "ustanowienie hipoteki na zabezpieczenie wierzytelności o wysokości nieustalonej" && (
+          <>
+            <div className="mb-6 flex flex-col gap-4">
+              <Label className="mb-2 block">
+                42. Inna czynność - rodzaj umowy*
+              </Label>
+              <Input type="text" id="p42" />
+            </div>
+          </>
+        )}
+        {type_of_transaction ===
+          "ustanowienie hipoteki na zabezpieczenie wierzytelności istniejących" && (
+          <>
+            <div className="mb-6 flex flex-col gap-4">
+              <Label className="mb-2 block">
+                40. Ustanowienie hipoteki na zabezpieczenie wierzytelności o
+                wysokości nieustalonej - podstawa opodatkowania określona
+                zgodnie z art. 6 ustawy zł*
+              </Label>
+              <Input
+                className={errors && "p40" in errors ? "border-red-500" : ""}
+                type="text"
+                id="p40"
+                {...register("p40")}
+              />
+              {errors && "p40" in errors && (
+                <p className="text-red-500 mt-1">
+                  {errors.p40?.message?.toString()}
+                </p>
+              )}
+            </div>
+            <div className="mb-6 flex flex-col gap-4">
+              <Label className="mb-2 block">
+                41. Ustanowienie hipoteki na zabezpieczenie wierzytelności o
+                wysokości nieustalonej - stawka podatku określona zgodnie z art.
+                7 ustawy*
+              </Label>
+              <Input type="text" id="p41" />
+            </div>
+          </>
+        )}
+
+        {type_of_transaction ===
+          "ustanowienie odpłatnego użytkowania, w tym nieprawidłowego" && (
+          <>
+            <div className="mb-6 flex flex-col gap-4">
+              <Label className="mb-2 block">
+                37. Ustanowienie odpłatnego użytkowania, w tym nieprawidłowego -
+                podstawa opodatkowania określona zgodnie z art. 6 ustawy zł*
+              </Label>
+              <Input
+                className={errors && "p37" in errors ? "border-red-500" : ""}
+                type="text"
+                id="p37"
+                {...register("p37")}
+              />
+              {errors && "p37" in errors && (
+                <p className="text-red-500 mt-1">
+                  {errors.p37?.message?.toString()}
+                </p>
+              )}
+            </div>
+            <div className="mb-6 flex flex-col gap-4">
+              <Label className="mb-2 block">
+                38. Ustanowienie odpłatnego użytkowania, w tym nieprawidłowego -
+                stawka podatku określona zgodnie z art. 7 ustawy*
+              </Label>
+              <RadioGroup className="flex flex-wrap gap-6" defaultValue={"1"}>
+                <div className="flex items-center space-x-3">
+                  <RadioGroupItem
+                    value="1"
+                    id="p38_1"
+                    className="w-5 h-5"
+                    onClick={() => setValue("p38", "1")}
+                  />
+                  <Label htmlFor="p38_1" className="text-lg">
+                    1%
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <RadioGroupItem
+                    value="2"
+                    id="p38_2"
+                    className="w-5 h-5"
+                    onClick={() => setValue("p38", "20")}
+                  />
+                  <Label htmlFor="p38_2" className="text-lg">
+                    2%
+                  </Label>
+                </div>
+              </RadioGroup>
+            </div>
+            <div className="mb-6 flex flex-col gap-4">
+              <Label className="mb-2 block">
+                39. Ustanowienie odpłatnego użytkowania, w tym nieprawidłowego -
+                obliczony należny podatek zł*
+              </Label>
+              <Input
+                className={errors && "p39" in errors ? "border-red-500" : ""}
+                type="text"
+                id="p39"
+              />
+            </div>
+          </>
+        )}
+        {type_of_transaction ===
+          "umowa darowizny w części dotyczącej przejęcia przez obdarowanego długów i ciężarów lub zobowiązań darczyńcy" && (
+          <>
+            <div className="mb-6 flex flex-col gap-4">
+              <Label className="mb-2 block">
+                34. Umowa darowizny w części dotyczącej przejęcia przez
+                obdarowanego długów i ciężarów lub zobowiązań darczyńcy -
+                podstawa opodatkowania określona zgodnie z art. 6 ustawy zł*
+              </Label>
+              <Input
+                className={errors && "p34" in errors ? "border-red-500" : ""}
+                type="text"
+                id="p34"
+                {...register("p34")}
+              />
+              {errors && "p34" in errors && (
+                <p className="text-red-500 mt-1">
+                  {errors.p34?.message?.toString()}
+                </p>
+              )}
+            </div>
+            <div className="mb-6 flex flex-col gap-4">
+              <Label className="mb-2 block">
+                35. Umowa darowizny w części dotyczącej przejęcia przez
+                obdarowanego długów i ciężarów lub zobowiązań darczyńcy - stawka
+                podatku określona zgodnie z art. 7 ustawy*
+              </Label>
+              <RadioGroup className="flex flex-wrap gap-6" defaultValue={"1"}>
+                <div className="flex items-center space-x-3">
+                  <RadioGroupItem
+                    value="1"
+                    id="p35_1"
+                    className="w-5 h-5"
+                    onClick={() => setValue("p35", "1")}
+                  />
+                  <Label htmlFor="p35_1" className="text-lg">
+                    1%
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <RadioGroupItem
+                    value="2"
+                    id="p35_2"
+                    className="w-5 h-5"
+                    onClick={() => setValue("p35", "2")}
+                  />
+                  <Label htmlFor="p35_2" className="text-lg">
+                    2%
+                  </Label>
+                </div>
+              </RadioGroup>
+            </div>
+            <div className="mb-6 flex flex-col gap-4">
+              <Label className="mb-2 block">
+                36. Umowa darowizny w części dotyczącej przejęcia przez
+                obdarowanego długów i ciężarów lub zobowiązań darczyńcy -
+                obliczony należny podatek zł*
+              </Label>
+              <Input
+                className={errors && "p36" in errors ? "border-red-500" : ""}
+                type="text"
+                id="p36"
+              />
+            </div>
+          </>
+        )}
+        {type_of_transaction ===
+          "umowa pożyczki lub depozytu nieprawidłowego, w tym zwolniona na podstawie art. 9 pkt 10 lit.b ustawy" && (
+          <>
+            <div className="mb-6 flex flex-col gap-4">
+              <Label className="mb-2 block">
+                31. Umowa pożyczki lub depozytu nieprawidłowego, w tym zwolniona
+                na podstawie art. 9 pkt 10 lit.b ustawy - podstawa opodatkowania
+                określona zgodnie z art. 6 ustawy zł*
+              </Label>
+              <Input
+                className={errors && "p31" in errors ? "border-red-500" : ""}
+                type="text"
+                id="p31"
+                {...register("p31")}
+              />
+              {errors && "p31" in errors && (
+                <p className="text-red-500 mt-1">
+                  {errors.p31?.message?.toString()}
+                </p>
+              )}
+            </div>
+            <div className="mb-6 flex flex-col gap-4">
+              <Label className="mb-2 block">
+                32. Umowa pożyczki lub depozytu nieprawidłowego, w tym zwolniona
+                na podstawie art. 9 pkt 10 lit.b ustawy - stawka podatku
+                określona zgodnie z art. 7 ustawy*
+              </Label>
+              <RadioGroup className="flex flex-wrap gap-6" defaultValue={"1"}>
+                <div className="flex items-center space-x-3">
+                  <RadioGroupItem
+                    value="0"
+                    id="p32_0"
+                    className="w-5 h-5"
+                    onClick={() => setValue("p32", "0")}
+                  />
+                  <Label htmlFor="p32_1" className="text-lg">
+                    1%
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <RadioGroupItem
+                    value="0.5"
+                    id="p32_0.5"
+                    className="w-5 h-5"
+                    onClick={() => setValue("p32", "0.5")}
+                  />
+                  <Label htmlFor="p32_0.5" className="text-lg">
+                    0.5%
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <RadioGroupItem
+                    value="2"
+                    id="p32_2"
+                    className="w-5 h-5"
+                    onClick={() => setValue("p32", "2")}
+                  />
+                  <Label htmlFor="p32_2" className="text-lg">
+                    2%
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <RadioGroupItem
+                    value="20"
+                    id="p32_20"
+                    className="w-5 h-5"
+                    onClick={() => setValue("p32", "20")}
+                  />
+                  <Label htmlFor="p32_20" className="text-lg">
+                    20%
+                  </Label>
+                </div>
+              </RadioGroup>
+            </div>
+            <div className="mb-6 flex flex-col gap-4">
+              <Label className="mb-2 block">
+                33. Umowa pożyczki lub depozytu nieprawidłowego, w tym zwolniona
+                na podstawie art. 9 pkt 10 lit.b ustawy - obliczony należny
+                podatek zł*
+              </Label>
+              <Input
+                className={errors && "p33" in errors ? "border-red-500" : ""}
+                type="text"
+                id="p33"
+              />
+            </div>
+            <div className="mb-6 flex flex-col gap-4">
+              <Label className="mb-2 block">
+                46. Kwota należnego podatku zł*
+              </Label>
+              <Input
+                className={errors && "p46" in errors ? "border-red-500" : ""}
+                type="text"
+                id="p46"
+              />
+            </div>
+          </>
+        )}
+        {type_of_transaction === "umowa zamiany" && (
+          <>
+            <div className="mb-6 flex flex-col gap-4">
+              <Label className="mb-2 block">
+                28. Umowa zamiany - podstawa opodatkowania określona zgodnie z
+                art. 6 ustawy zł*
+              </Label>
+              <Input
+                className={errors && "p28" in errors ? "border-red-500" : ""}
+                type="text"
+                id="p28"
+                {...register("p28")}
+              />
+              {errors && "p28" in errors && (
+                <p className="text-red-500 mt-1">
+                  {errors.p28?.message?.toString()}
+                </p>
+              )}
+            </div>
+            <div className="mb-6 flex flex-col gap-4">
+              <Label className="mb-2 block">
+                29. Umowa zamiany - stawka podatku określona zgodnie z art. 7
+                ustawy*
+              </Label>
+              <RadioGroup className="flex flex-wrap gap-6" defaultValue={"1"}>
+                <div className="flex items-center space-x-3">
+                  <RadioGroupItem
+                    value="1"
+                    id="p29_1"
+                    className="w-5 h-5"
+                    onClick={() => setValue("p29", "1")}
+                  />
+                  <Label htmlFor="p44_1" className="text-lg">
+                    1%
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <RadioGroupItem
+                    value="2"
+                    id="p29_2"
+                    className="w-5 h-5"
+                    onClick={() => setValue("p29", "2")}
+                  />
+                  <Label htmlFor="p29_2" className="text-lg">
+                    2%
+                  </Label>
+                </div>
+              </RadioGroup>
+            </div>
+            <div className="mb-6 flex flex-col gap-4">
+              <Label className="mb-2 block">
+                30. Umowa zamiany - obliczony należny podatek zł*
+              </Label>
+              <Input
+                className={errors && "p30" in errors ? "border-red-500" : ""}
+                type="text"
+                id="p30"
+              />
+            </div>
+            <div className="mb-6 flex flex-col gap-4">
+              <Label className="mb-2 block">
+                46. Kwota należnego podatku zł*
+              </Label>
+              <Input
+                className={errors && "p46" in errors ? "border-red-500" : ""}
+                type="text"
+                id="p46"
+              />
+            </div>
+          </>
+        )}
         {type_of_transaction === "umowa sprzedaży" && (
           <>
             <div className="mb-6 flex flex-col gap-4">
-              <Label className="mb-2 block">Inna czynność cywilnoprawna</Label>
+              <Label className="mb-2 block">
+                Umowa sprzedaży (stawka podatku 1%) - podstawa opodatkowania
+                określona zgodnie z art. 6 ustawy zł
+              </Label>
               <Input
-                className={errors && "p43" in errors ? "border-red-500" : ""}
+                className={errors && "p24" in errors ? "border-red-500" : ""}
                 type="text"
-                id="p43"
-                {...register("p43")}
+                id="p24"
+                {...register("p24")}
               />
-              {errors && "p43" in errors && (
+              {errors && "p24" in errors && (
                 <p className="text-red-500 mt-1">
-                  {errors.p43?.message?.toString()}
+                  {errors.p24?.message?.toString()}
                 </p>
               )}
+            </div>
+            <div className="mb-6 flex flex-col gap-4">
+              <Label className="mb-2 block">
+                Umowa sprzedaży (stawka podatku 1%) - obliczony należny podatek
+                zł*
+              </Label>
+              <Input
+                className={errors && "p25" in errors ? "border-red-500" : ""}
+                type="text"
+                id="p25"
+              />
+            </div>
+            <div className="mb-6 flex flex-col gap-4">
+              <Label className="mb-2 block">Inna czynność cywilnoprawna</Label>
+              <Input
+                className={errors && "p26" in errors ? "border-red-500" : ""}
+                type="text"
+                id="p26"
+                {...register("p26")}
+              />
+              {errors && "p26" in errors && (
+                <p className="text-red-500 mt-1">
+                  {errors.p26?.message?.toString()}
+                </p>
+              )}
+            </div>
+            <div className="mb-6 flex flex-col gap-4">
+              <Label className="mb-2 block">Inna czynność cywilnoprawna</Label>
+              <Input
+                className={errors && "p27" in errors ? "border-red-500" : ""}
+                type="text"
+                id="p27"
+              />
+            </div>
+            <div className="mb-6 flex flex-col gap-4">
+              <Label className="mb-2 block">Kwota należnego podatku zł*</Label>
+              <Input
+                className={errors && "p46" in errors ? "border-red-500" : ""}
+                type="text"
+                id="p46"
+              />
             </div>
           </>
         )}
