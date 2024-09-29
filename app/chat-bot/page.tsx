@@ -3,6 +3,9 @@ import { redirect } from "next/navigation";
 import TempForm from "@/components/temp-form";
 import Chat from "@/components/chat";
 import FormA from "@/components/forms/form-A";
+import FormB from "@/components/forms/form-B";
+import FormC from "@/components/forms/form-C";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default async function ChatBot() {
   const supabase = createClient();
@@ -17,7 +20,13 @@ export default async function ChatBot() {
 
   return (
     <>
-      <FormA />
+      <div className="flex flex-col gap-4">
+        <ScrollArea>
+          <FormA />
+          <FormB />
+          <FormC />
+        </ScrollArea>
+      </div>
       <Chat />
     </>
   );

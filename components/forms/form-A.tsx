@@ -50,11 +50,13 @@ export default function FormA() {
   console.log(value);
   return (
     <div className="flex-grow border-r min-w-[400px] border-gray-300 pr-4 p-6">
-      <h2 className="text-2xl font-semibold mb-6 text-blue-950">Tax Form</h2>
+      <h2 className="text-2xl font-semibold mb-6 text-blue-950">
+        Formularz podatkowy
+      </h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="mb-6">
           <div>
-            <Label className="mb-2 block">Date of Action</Label>
+            <Label className="mb-2 block">Data czynności</Label>
             <Input
               className={
                 errors && "date_of_action" in errors ? "border-red-500" : ""
@@ -70,7 +72,7 @@ export default function FormA() {
             )}
           </div>
           <div>
-            <Label className="mb-2 block">Purpose of Action</Label>
+            <Label className="mb-2 block">Cel czynności</Label>
             <RadioGroup
               className="flex flex-wrap gap-6"
               defaultValue={purpose_of_action ? "true" : "false"}
@@ -109,7 +111,7 @@ export default function FormA() {
             )}
           </div>
           <div>
-            <Label className="mb-2 block">Tax Office</Label>
+            <Label className="mb-2 block">Urząd skarbowy</Label>
             <Popover open={open} onOpenChange={setOpen}>
               <PopoverTrigger asChild>
                 <Button
@@ -122,15 +124,15 @@ export default function FormA() {
                     ? declarationOffices.find((name, key) => {
                         return name[1] === value;
                       })?.[0]
-                    : "Select Tax Office..."}
+                    : "Wybierz urząd skarbowy..."}
                   <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="p-0">
                 <Command>
-                  <CommandInput placeholder="Search framework..." />
+                  <CommandInput placeholder="Szukaj urzędu..." />
                   <CommandList>
-                    <CommandEmpty>No framework found.</CommandEmpty>
+                    <CommandEmpty>Nie znaleziono urzędu.</CommandEmpty>
                     <CommandGroup>
                       {declarationOffices.map((office) => (
                         <CommandItem
@@ -160,7 +162,7 @@ export default function FormA() {
           </div>
           {purpose_of_action === "Korekta Deklaracji" && (
             <div>
-              <Label className="mb-2 block">Reason for Correction</Label>
+              <Label className="mb-2 block">Powód korekty</Label>
               <Input
                 type="text"
                 id="reason_for_correction"
@@ -170,7 +172,7 @@ export default function FormA() {
           )}
         </div>
         <Button type="submit" className="mt-6">
-          Submit
+          Wyślij
         </Button>
       </form>
     </div>
