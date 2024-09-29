@@ -158,6 +158,7 @@ export default function StateLoader() {
       <div className="flex h-full flex-col gap-4">
         <div className="flex-col  h-full pr-10 gap-4 border-r border-gray-300">
           <form
+            className="h-full"
             onSubmit={handleSubmit((data) => {
               console.log(data);
             })}
