@@ -48,7 +48,6 @@ export default function FormA() {
 
   const onSubmit = (data: FormData) => console.log(data);
   const p47 = watch("p47");
-  console.log(value);
 
   return (
     <div className="flex-grow  min-w-[400px] pr-4 p-6">
@@ -88,7 +87,9 @@ export default function FormA() {
           </div>
         </div>
         <div className="mb-6">
-          <Label className="mb-2 block">48. Podstawa opodatkowania dotyczy</Label>
+          <Label className="mb-2 block">
+            48. Podstawa opodatkowania dotyczy
+          </Label>
           <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
               <Button
@@ -156,7 +157,10 @@ export default function FormA() {
           </Popover>
         </div>
         <div className="mb-6">
-          <Label className="mb-2 block">49. Podstawa opodatkowania - określona zgodnie z art. 6 ust. 1 pkt 8 ustawy zł</Label>
+          <Label className="mb-2 block">
+            49. Podstawa opodatkowania - określona zgodnie z art. 6 ust. 1 pkt 8
+            ustawy zł
+          </Label>
           <Input
             className={errors && "p49" in errors ? "border-red-500" : ""}
             type="number"
@@ -168,7 +172,10 @@ export default function FormA() {
           )}
         </div>
         <div className="mb-6">
-          <Label className="mb-2 block">50. Opłaty i koszty związane z zawarciem umowy spółki lub jej zmiany - na podstawie art. 6 ust. 9 ustawy zł</Label>
+          <Label className="mb-2 block">
+            50. Opłaty i koszty związane z zawarciem umowy spółki lub jej zmiany
+            - na podstawie art. 6 ust. 9 ustawy zł
+          </Label>
           <Input
             className={errors && "p50" in errors ? "border-red-500" : ""}
             type="number"

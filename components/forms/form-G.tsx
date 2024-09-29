@@ -28,7 +28,9 @@ export default function TempForm() {
       <h2 className="text-2xl font-semibold mb-6 text-blue-950">Sekcja G</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="mb-6">
-          <Label className="mb-2 block">Województwo <i>(opcjonalne)</i></Label>
+          <Label className="mb-2 block">
+            Województwo <i>(opcjonalne)</i>
+          </Label>
           <Input
             type="text"
             id="additional_voivodeship"
@@ -36,7 +38,9 @@ export default function TempForm() {
           />
         </div>
         <div className="mb-6">
-          <Label className="mb-2 block">Powiat <i>(opcjonalne)</i></Label>
+          <Label className="mb-2 block">
+            Powiat <i>(opcjonalne)</i>
+          </Label>
           <Input
             type="text"
             id="additional_county"
@@ -44,7 +48,9 @@ export default function TempForm() {
           />
         </div>
         <div className="mb-6">
-          <Label className="mb-2 block">Gmina <i>(opcjonalne)</i></Label>
+          <Label className="mb-2 block">
+            Gmina <i>(opcjonalne)</i>
+          </Label>
           <Input
             type="text"
             id="additional_municipality"
@@ -52,7 +58,9 @@ export default function TempForm() {
           />
         </div>
         <div className="mb-6">
-          <Label className="mb-2 block">Miejscowość <i>(opcjonalne)</i></Label>
+          <Label className="mb-2 block">
+            Miejscowość <i>(opcjonalne)</i>
+          </Label>
           <Input
             type="text"
             id="additional_city"
@@ -60,7 +68,9 @@ export default function TempForm() {
           />
         </div>
         <div className="mb-6">
-          <Label className="mb-2 block">Ulica <i>(opcjonalne)</i></Label>
+          <Label className="mb-2 block">
+            Ulica <i>(opcjonalne)</i>
+          </Label>
           <Input
             type="text"
             id="additional_street"
@@ -68,7 +78,9 @@ export default function TempForm() {
           />
         </div>
         <div className="mb-6">
-          <Label className="mb-2 block">Numer domu <i>(opcjonalne)</i></Label>
+          <Label className="mb-2 block">
+            Numer domu <i>(opcjonalne)</i>
+          </Label>
           <Input
             type="text"
             id="additional_house_number"
@@ -76,7 +88,9 @@ export default function TempForm() {
           />
         </div>
         <div className="mb-6">
-          <Label className="mb-2 block">Numer mieszkania <i>(opcjonalne)</i></Label>
+          <Label className="mb-2 block">
+            Numer mieszkania <i>(opcjonalne)</i>
+          </Label>
           <Input
             type="text"
             id="additional_apartment_number"
@@ -84,7 +98,9 @@ export default function TempForm() {
           />
         </div>
         <div className="mb-6">
-          <Label className="mb-2 block">Kod pocztowy <i>(opcjonalne)</i></Label>
+          <Label className="mb-2 block">
+            Kod pocztowy <i>(opcjonalne)</i>
+          </Label>
           <Input
             type="text"
             id="additional_postal_code"

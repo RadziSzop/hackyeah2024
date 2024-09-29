@@ -26,6 +26,7 @@ export default function FormC() {
   const type_of_transaction = watch("type_of_transaction");
   const p43a = watch("p43a");
   const p44 = watch("p44");
+<<<<<<< Updated upstream
   const p24 = watch("p24");
   const p26 = watch("p26");
   const p28 = watch("p28");
@@ -39,6 +40,8 @@ export default function FormC() {
   const p40 = watch("p40");
   const p43 = watch("p43");
   console.log(p43a, p44, type_of_transaction);
+=======
+>>>>>>> Stashed changes
   return (
     <div className="flex-grow border-r min-w-[400px] border-gray-300 pr-4 p-6">
       <h2 className="text-2xl font-semibold mb-6 text-blue-950">Sekcja D</h2>
@@ -197,7 +200,8 @@ export default function FormC() {
           <>
             <div className="mb-6 flex flex-col gap-4">
               <Label className="mb-2 block">
-              42. Ustanowienie hipoteki na zabezpieczenie wierzytelności o wysokości nieustalonej - obliczony należny podatek zł 
+                42. Ustanowienie hipoteki na zabezpieczenie wierzytelności o
+                wysokości nieustalonej - obliczony należny podatek zł
               </Label>
               <Input value={19}type="text" id="p42" />
             </div>
@@ -538,8 +542,8 @@ export default function FormC() {
             </div>
             <div className="mb-6 flex flex-col gap-4">
               <Label className="mb-2 block">
-                25. Umowa sprzedaży (stawka podatku 1%) - obliczony należny podatek
-                zł
+                25. Umowa sprzedaży (stawka podatku 1%) - obliczony należny
+                podatek zł
               </Label>
               <Input
                 value={p24 ? Math.round(p24 * 0.01) : 0}
@@ -549,7 +553,10 @@ export default function FormC() {
               />
             </div>
             <div className="mb-6 flex flex-col gap-4">
-              <Label className="mb-2 block">26. Umowa sprzedaży (stawka podatku 2%) - podstawa opodatkowania określona zgodnie z art. 6 ustawy zł</Label>
+              <Label className="mb-2 block">
+                26. Umowa sprzedaży (stawka podatku 2%) - podstawa opodatkowania
+                określona zgodnie z art. 6 ustawy zł
+              </Label>
               <Input
                 className={errors && "p26" in errors ? "border-red-500" : ""}
                 type="text"
@@ -563,7 +570,10 @@ export default function FormC() {
               )}
             </div>
             <div className="mb-6 flex flex-col gap-4">
-              <Label className="mb-2 block">27. Umowa sprzedaży (stawka podatku 2%) - obliczony należny podatek</Label>
+              <Label className="mb-2 block">
+                27. Umowa sprzedaży (stawka podatku 2%) - obliczony należny
+                podatek
+              </Label>
               <Input
                 value={p26 ? Math.round(p26 * 0.02) : 0}
                 className={errors && "p27" in errors ? "border-red-500" : ""}
@@ -674,7 +684,8 @@ export default function FormC() {
             </div>
             <div>
               <Label htmlFor="p43a" className="mb-2 block">
-              43. Inna czynność - podstawa opodatkowania określona zgodnie z art. 6 ustawy zł
+                43. Inna czynność - podstawa opodatkowania określona zgodnie z
+                art. 6 ustawy zł
               </Label>
               <Input
                 className={errors && "p43" in errors ? "border-red-500" : ""}

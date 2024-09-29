@@ -51,7 +51,6 @@ export default function FormA() {
 
   const onSubmit = (data: FormData) => console.log(data);
   const purpose_of_action = watch("purpose_of_action");
-  console.log(value);
 
   return (
     <div className="flex-grow  min-w-[400px] pr-4 p-6">

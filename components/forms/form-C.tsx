@@ -31,7 +31,6 @@ export default function FormC() {
   const subject_of_taxation = watch("subject_of_taxation");
   const location_of_item = watch("location_of_item");
   const location_of_transaction = watch("location_of_transaction");
-  console.log(errors);
   return (
     <div className="flex-grow min-w-[400px] pr-4 p-6">
       <h2 className="text-2xl font-semibold mb-6 text-blue-950">Sekcja C</h2>

@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import FormD from "@/components/forms/form-D";
 import FormE from "@/components/forms/form-E";
 import FormG from "@/components/forms/form-G";
+import StateLoader from "@/components/state-loader";
 
 export default async function ChatBot() {
   const supabase = createClient();
@@ -22,24 +23,5 @@ export default async function ChatBot() {
     return redirect("/sign-in");
   }
 
-  return (
-    <>
-      <div className="flex flex-col gap-4">
-        <ScrollArea>
-          <div className="flex flex-col pr-10 gap-4 border-r border-gray-300">
-            <h1 className="text-3xl font-bold mt-8 text-blue-950">
-              Formularz podatkowy PCC3
-            </h1>
-            <FormA />
-            <FormB />
-            <FormC />
-            <FormD />
-            <FormE />
-            <FormG />
-          </div>
-        </ScrollArea>
-      </div>
-      <Chat />
-    </>
-  );
+  return <StateLoader />;
 }
