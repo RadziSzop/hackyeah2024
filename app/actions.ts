@@ -7,6 +7,7 @@ import { redirect } from "next/navigation";
 import { generateObject, generateText, streamObject, streamText, tool } from 'ai'
 import { openAI } from "@/utils/ai";
 import { z } from "zod";
+import { declarationOffices } from "./types/formTypes";
 
 const model = openAI('gpt-4o-mini-2024-07-18')
 
@@ -80,6 +81,8 @@ export const askAI = async (formData: FormData) => {
     );
   }
 
+  const declarationOfficesKeys = [...Object.keys(declarationOffices), "brak"] as Array<keyof typeof declarationOffices>;
+
   const prompt = formData.get("prompt") as string;
   const AIsystem = `
   Jesteś pomocnym asystentem, który odpowiada na pytania dotyczące polskiego prawa podatkowego PCC3. Dzisiaj jest ${new Date().toLocaleDateString('pl-PL', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}.
@@ -95,7 +98,8 @@ export const askAI = async (formData: FormData) => {
 
       // SECTION A
       date_of_action: z.string().describe("Data wykonania czynności, jeśli jej nie ma, wpisz 'brak'"),
-      tax_office: z.string().describe("Nazwa urzędu skarbowego, w którym jest zarejestrowana osoba, której dotyczy pytanie"),
+      // tax_office: z.string().describe("Nazwa urzędu skarbowego, w którym jest zarejestrowana osoba, której dotyczy pytanie"),
+      tax_office: z.enum(declarationOfficesKeys).describe("Nazwa urzędu skarbowego, w którym jest zarejestrowana osoba, której dotyczy pytanie"),
       purpose_of_action: z.enum(["Złożenie Deklaracji", "Korekta Deklaracji", "brak"])
       .describe("Cel czynności, której dotyczy pytanie."),
       
