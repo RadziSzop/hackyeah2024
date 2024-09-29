@@ -326,6 +326,7 @@ export default function FormC() {
                     id="p44_1"
                     className="w-5 h-5"
                     onClick={() => setValue("p44", "1")}
+                    checked={p44 === "1"}
                   />
                   <Label htmlFor="p44_1" className="text-lg">
                     1%
@@ -337,6 +338,7 @@ export default function FormC() {
                     id="p44_2"
                     className="w-5 h-5"
                     onClick={() => setValue("p44", "2")}
+                    checked={p44 === "2"}
                   />
                   <Label htmlFor="p44_2" className="text-lg">
                     2%
@@ -349,6 +351,7 @@ export default function FormC() {
                       id="p44_6"
                       className="w-5 h-5"
                       onClick={() => setValue("p44", "6")}
+                      checked={p44 === "6"}
                     />
                     <Label htmlFor="p44_6" className="text-lg">
                       6%
