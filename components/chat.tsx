@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { askAI } from "@/app/actions";
 import { readStreamableValue } from "ai/rsc";
+import ReactMarkdown from "react-markdown";
 
 export default function Chat() {
   const [messages, setMessages] = useState<
@@ -90,7 +91,7 @@ export default function Chat() {
                 message.role === "user" ? "bg-blue-100 ml-auto" : "bg-white"
               } max-w-[80%]`}
             >
-              {message.content}
+              <ReactMarkdown>{message.content}</ReactMarkdown>
             </div>
           ))}
           {/* {isWaiting && (
