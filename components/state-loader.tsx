@@ -221,7 +221,6 @@ export default function StateLoader() {
                 watch={watch}
                 setValue={setValue}
               />
-
               <Button type="submit" className="mt-6">
                 Zweryfikuj
               </Button>
