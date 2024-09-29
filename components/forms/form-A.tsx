@@ -1,4 +1,5 @@
 "use client";
+
 import { schemaA } from "@/utils/schemas/PCC3";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -51,11 +52,10 @@ export default function FormA() {
   const onSubmit = (data: FormData) => console.log(data);
   const purpose_of_action = watch("purpose_of_action");
   console.log(value);
+
   return (
-    <div className="flex-grow border-r min-w-[400px] border-gray-300 pr-4 p-6">
-      <h2 className="text-2xl font-semibold mb-6 text-blue-950">
-        Sekcja A
-      </h2>
+    <div className="flex-grow  min-w-[400px] pr-4 p-6">
+      <h2 className="text-2xl font-semibold mb-6 text-blue-950">Sekcja A</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="mb-6">
           <div className="mb-6">
@@ -121,7 +121,7 @@ export default function FormA() {
                   variant="outline"
                   role="combobox"
                   aria-expanded={open}
-                  className=" justify-between"
+                  className="justify-between"
                 >
                   {value
                     ? declarationOffices.find((name, key) => {
@@ -164,7 +164,7 @@ export default function FormA() {
             </Popover>
           </div>
           {purpose_of_action === "Korekta Deklaracji" && (
-            <div>
+            <div className="mb-4">
               <Label className="mb-2 block">Powód korekty</Label>
               <Input
                 type="text"
@@ -174,7 +174,7 @@ export default function FormA() {
             </div>
           )}
         </div>
-        <Button type="submit" className="mt-6">
+        <Button type="submit" className="mt-6 -translate-y-6">
           Zweryfikuj
         </Button>
       </form>

@@ -17,7 +17,7 @@ export default function Chat() {
     {
       role: "assistant",
       content:
-        "Witam! Jestem Podatkomat! Jak mogę pomóc?",
+        "Witam! Jestem Podatkomat, Twój osobisty asystent! Jak mogę pomóc?",
     },
   ]);
   const [inputMessage, setInputMessage] = useState("");
@@ -59,7 +59,11 @@ export default function Chat() {
                 // Add new message if not found
                 return [
                   ...prevMessages,
-                  { id: id, role: "assistant", content: JSON.stringify(partialObject    ) },
+                  {
+                    id: id,
+                    role: "assistant",
+                    content: JSON.stringify(partialObject),
+                  },
                 ];
               }
             });
@@ -81,8 +85,8 @@ export default function Chat() {
   };
 
   return (
-    <div className="max-w-[450px] bg-gray-100 p-4 rounded-lg">
-      <div className="h-[calc(100vh-16rem)] flex flex-col">
+    <div className="h-full max-w-[450px] bg-gray-100 p-4 rounded-lg">
+      <div className="h-full flex flex-col">
         <div className="flex-grow overflow-auto mb-4 space-y-4 text-black">
           {messages.map((message, index) => (
             <div
