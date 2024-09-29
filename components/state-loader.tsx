@@ -22,6 +22,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "./ui/button";
+import { changeFieldText } from "@/utils/changeFieldText";
 
 export default function StateLoader() {
   const [formData, setFormData] = useState<any>(null);
@@ -109,6 +110,17 @@ export default function StateLoader() {
           setMessages((prevMessages) => {
             const lastMessage = prevMessages[prevMessages.length - 1];
             console.log(lastMessage.other);
+
+            try {
+              Object.entries(lastMessage.other).forEach(([key, value]) => {
+                console.log(key, value);
+                if (value !== "brak" && typeof value === "string") {
+                  changeFieldText(key, "", value, setValue);
+                }
+              });
+            } catch (error) {
+              console.error("Error updating form fields:", error);
+            }
             return prevMessages;
           });
         }
@@ -140,6 +152,7 @@ export default function StateLoader() {
     setValue,
   } = useForm<FormData>({
     defaultValues: {
+      // @ts-ignore
       purpose_of_action: "Złożenie Deklaracji",
       natural_person: false,
       // @ts-ignore
@@ -209,7 +222,7 @@ export default function StateLoader() {
                 setValue={setValue}
               />
 
-              <Button type="submit" className="mt-6" onClick={handleSubmit}>
+              <Button type="submit" className="mt-6">
                 Zweryfikuj
               </Button>
             </ScrollArea>

@@ -20,9 +20,12 @@ export default async function Navbar() {
           <nav className="flex justify-between items-center">
             <Link href="/">
               <div className="flex items-center space-x-2">
-                <HandCoins strokeWidth={2.5} />
                 {/* <h1 className="text-2xl font-bold">Podatkomat</h1> */}
-                <Image src={logo} alt="Podatkomat" width={200} height={200} />
+                <Image
+                  src={logo}
+                  alt="Podatkomat"
+                  style={{ width: "500px", height: "40px" }}
+                />
               </div>
             </Link>
             <Navlinks user={user} />

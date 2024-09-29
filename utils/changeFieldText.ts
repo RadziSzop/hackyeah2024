@@ -8,14 +8,25 @@ export const changeFieldText = (
   let isGoingUp = false;
   let delay = 130;
   const inputElement = document.getElementById(field) as HTMLInputElement;
-  const updateValue = () => {
-    if (inputElement) {
-      inputElement.style.transform = "scale(1.05)";
-      inputElement.style.transition = "transform 0.3s ease";
-      setTimeout(() => {
-        inputElement.style.transform = "scale(1)";
-      }, 300);
-    }
+
+  const scrollToInput = () => {
+    return new Promise<void>((resolve) => {
+      if (inputElement) {
+        inputElement.scrollIntoView({ behavior: "smooth", block: "center" });
+        inputElement.style.transform = "scale(1.05)";
+        inputElement.style.transition = "transform 0.3s ease";
+        setTimeout(() => {
+          inputElement.style.transform = "scale(1)";
+          resolve();
+        }, 300);
+      } else {
+        resolve();
+      }
+    });
+  };
+
+  const updateValue = async () => {
+    await scrollToInput();
 
     if (currentValue.length >= 1 && !isGoingUp) {
       currentValue = currentValue.slice(0, -1);
@@ -44,6 +55,7 @@ export const changeFieldState = (
 ) => {
   const inputElement = document.getElementById(field) as HTMLInputElement;
   if (inputElement) {
+    inputElement.scrollIntoView({ behavior: "smooth", block: "center" });
     inputElement.style.transform = "scale(1.05)";
     inputElement.style.transition = "transform 0.3s ease";
     setTimeout(() => {
