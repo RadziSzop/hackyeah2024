@@ -89,6 +89,7 @@ export const askAI = async (formData: FormData) => {
   const result = await generateObject({
     model: model,
     schema: z.object({
+      // TODO: Refine the answer description. It should be short and clear.
       answer: z.string(),
       jailbreak_attempt: z.boolean().describe("Czy pytanie jest próbą wyjścia poza temat"),
 
@@ -146,15 +147,15 @@ export const askAI = async (formData: FormData) => {
 
       // SECTION D.3
       p31: z.number().describe("Umowa pożyczki lub depozytu nieprawidłowego - podstawa opodatkowania określona zgodnie z art. 6 ustawy. Zignoruj, jeśli typ transakcji jest inny niż umowa pożyczki lub depozytu nieprawidłowego"),
-      p32: z.enum(["0", "0.5", "2", "20"]).describe("Umowa pożyczki lub depozytu nieprawidłowego - stawka podatku określona zgodnie z art. 7 ustawy. Wartość 0 oznacza zwolnienie od podatku, wartość 0.5 oznacza stawkę 0,5%, wartość 2 oznacza stawkę 2%, wartość 20 oznacza stawkę 20%. Zignoruj, jeśli typ transakcji jest inny niż umowa pożyczki lub depozytu nieprawidłowego"),
+      p32: z.enum(["0", "0.5", "2", "20", "brak"]).describe("Umowa pożyczki lub depozytu nieprawidłowego - stawka podatku określona zgodnie z art. 7 ustawy. Wartość 0 oznacza zwolnienie od podatku, wartość 0.5 oznacza stawkę 0,5%, wartość 2 oznacza stawkę 2%, wartość 20 oznacza stawkę 20%. Zignoruj, jeśli typ transakcji jest inny niż umowa pożyczki lub depozytu nieprawidłowego"),
 
       // SECTION D.4
       p34: z.number().describe("Umowa darowizny - podstawa opodatkowania określona zgodnie z art. 6 ustawy zł. Zignoruj, jeśli typ transakcji jest inny niż umowa darowizny"),
-      p35: z.enum(["1", "2"]).describe("Umowa darowizny - stawka podatku określona zgodnie z art. 7 ustawy. Wartość 1 oznacza stawkę 1%, wartość 2 oznacza stawkę 2%. Ziignoruj, jeśli typ transakcji jest inny niż umowa darowizny"),
+      p35: z.enum(["1", "2", "brak"]).describe("Umowa darowizny - stawka podatku określona zgodnie z art. 7 ustawy. Wartość 1 oznacza stawkę 1%, wartość 2 oznacza stawkę 2%. Ziignoruj, jeśli typ transakcji jest inny niż umowa darowizny"),
 
       // SECTION D.5
       p37: z.number().describe("Ustanowienie odpłatnego użytkowania - podstawa opodatkowania określona zgodnie z art. 6 ustawy zł. Ziignoruj, jeśli typ transakcji jest inny niż ustanowienie odpłatnego użytkowania"),
-      p38: z.enum(["1", "20"]).describe("Ustanowienie odpłatnego użytkowania - stawka podatku określona zgodnie z art. 7 ustawy. Wartość 1 oznacza stawkę 1%, wartość 20 oznacza stawkę 20%. Zignoruj, jeśli typ transakcji jest inny niż ustanowienie odpłatnego użytkowania"),
+      p38: z.enum(["1", "20", "brak"]).describe("Ustanowienie odpłatnego użytkowania - stawka podatku określona zgodnie z art. 7 ustawy. Wartość 1 oznacza stawkę 1%, wartość 20 oznacza stawkę 20%. Zignoruj, jeśli typ transakcji jest inny niż ustanowienie odpłatnego użytkowania"),
 
       // SECTION D.6
       p40: z.number().describe("Ustanowienie hipoteki na zabezpieczenie wierzytelności istniejących - podstawa opodatkowania zł. Zignoruj, jeśli typ transakcji jest inny niż ustanowienie hipoteki na zabezpieczenie wierzytelności istniejących"),
@@ -163,7 +164,7 @@ export const askAI = async (formData: FormData) => {
       // SECTION D.8
       p43a: z.enum(["Umowa dożywocia", "Umowa o dział spadku - w części spłat lub dopłat", "Umowa o zniesienie współwłasności - w części spłat lub dopłat", "Ustanowienie odpłatnej służebności", "Orzeczenie sądu", "brak"]).describe("Inna czynność cywilnoprawna. Jeśli nie ma, wpisz 'brak'"),
       p43: z.number().describe("Inna czynność - podstawa opodatkowania określona zgodnie z art. 6 ustawy"),
-      p44: z.enum(["1", "2", "6"]).describe("Inna czynność - stawka podatku określona zgodnie z art. 7 ustawy. Wartość 1 oznacza stawkę 1%, wartość 2 oznacza stawkę 2%, wartość 6 oznacza stawkę 6%. Zignoruj opcję 6%, jeśli inna czyność cywilnoprawna nie jest orzeczeniem sądu"),
+      p44: z.enum(["1", "2", "6", "brak"]).describe("Inna czynność - stawka podatku określona zgodnie z art. 7 ustawy. Wartość 1 oznacza stawkę 1%, wartość 2 oznacza stawkę 2%, wartość 6 oznacza stawkę 6%. Zignoruj opcję 6%, jeśli inna czyność cywilnoprawna nie jest orzeczeniem sądu"),
 
       // SECTION E
       p47: z.enum(["Spółka osobowa", "Spółka kapitałowa", "brak"]).describe("Rodzaj spółki, jeśli nie ma, wpisz 'brak'"),
