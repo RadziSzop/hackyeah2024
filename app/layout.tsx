@@ -3,6 +3,7 @@ import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import Navbar from "@/components/ui/navbar";
 import { Toaster } from "@/components/ui/toaster";
+import { Providers } from "@/components/providers";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -31,7 +32,7 @@ export default function RootLayout({
           <main className="min-h-screen bg-gray-100 flex flex-col items-center">
             <Navbar />
             <div className="h-[calc(100vh-72px)] mt-auto w-full">
-              {children}
+              <Providers>{children}</Providers>
             </div>
           </main>
         </ThemeProvider>
