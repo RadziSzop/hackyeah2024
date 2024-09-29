@@ -64,3 +64,14 @@ export const changeFieldState = (
   }
   setValue(field, state);
 };
+
+
+export const changeFieldUIState = (
+  field: string,
+  state: boolean,
+) => {
+  const inputElement = document.getElementById(field) as HTMLInputElement;
+  if (inputElement) {
+    inputElement.checked = state;
+  }
+};

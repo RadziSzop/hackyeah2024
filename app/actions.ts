@@ -56,7 +56,7 @@ export const signInAction = async (formData: FormData) => {
     email,
     options: {
       shouldCreateUser: true,
-      emailRedirectTo: "http://localhost:3000/auth/callback",
+      emailRedirectTo: process.env.REDIRECT_URL,
     },
   });
 
