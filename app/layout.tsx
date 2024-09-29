@@ -28,11 +28,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Toaster />
-          <main className="min-h-screen flex flex-col items-center">
+          <main className="flex flex-col items-center">
             <Navbar />
-            <div className="h-[calc(100vh-72px)] mt-auto w-screen">
-              {children}
-            </div>
+            <div className=" mt-[72px] w-full">{children}</div>
           </main>
         </ThemeProvider>
       </body>

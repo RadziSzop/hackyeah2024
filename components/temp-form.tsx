@@ -33,13 +33,13 @@ export default function TempForm() {
   const isPESEL = watch("type.isPESEL");
 
   return (
-    <div className="flex-grow pr-4">
-      <h2 className="text-2xl font-semibold mb-4 text-blue-950">Tax Form</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="mb-4">
-          <Label>Is Natural Person</Label>
+    <div className="flex-grow border-r min-w-[400px] border-gray-300 pr-4 p-6">
+      <h2 className="text-2xl font-semibold mb-6 text-blue-950">Tax Form</h2>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <div className="mb-6">
+          <Label className="mb-2 block">Is Natural Person</Label>
           <RadioGroup
-            className="flex gap-4"
+            className="flex flex-wrap gap-6"
             defaultValue={natural_person ? "true" : "false"}
           >
             <div className="flex items-center space-x-3">
@@ -68,59 +68,67 @@ export default function TempForm() {
         </div>
         {!natural_person ? (
           <>
-            <div>
-              <Label htmlFor="NIP">NIP</Label>
-              <Input
-                className={errors && "NIP" in errors ? "border-red-500" : ""}
-                type="text"
-                id="NIP"
-                {...register("NIP")}
-              />
-              {errors && "NIP" in errors && (
-                <p className="text-red-500">
-                  {errors.NIP?.message?.toString()}
-                </p>
-              )}
-            </div>
-            <div>
-              <Label htmlFor="full_name">Full Name</Label>
-              <Input
-                className={
-                  errors && "full_name" in errors ? "border-red-500" : ""
-                }
-                type="text"
-                id="full_name"
-                {...register("full_name")}
-              />
-              {errors && "full_name" in errors && (
-                <p className="text-red-500">
-                  {errors.full_name?.message?.toString()}
-                </p>
-              )}
-            </div>
-            <div>
-              <Label htmlFor="short_name">Short Name</Label>
-              <Input
-                className={
-                  errors && "short_name" in errors ? "border-red-500" : ""
-                }
-                type="text"
-                id="short_name"
-                {...register("short_name")}
-              />
-              {errors && "short_name" in errors && (
-                <p className="text-red-500">
-                  {errors.short_name?.message?.toString()}
-                </p>
-              )}
+            <div className="space-y-4">
+              <div>
+                <Label htmlFor="NIP" className="mb-2 block">
+                  NIP
+                </Label>
+                <Input
+                  className={errors && "NIP" in errors ? "border-red-500" : ""}
+                  type="text"
+                  id="NIP"
+                  {...register("NIP")}
+                />
+                {errors && "NIP" in errors && (
+                  <p className="text-red-500 mt-1">
+                    {errors.NIP?.message?.toString()}
+                  </p>
+                )}
+              </div>
+              <div>
+                <Label htmlFor="full_name" className="mb-2 block">
+                  Full Name
+                </Label>
+                <Input
+                  className={
+                    errors && "full_name" in errors ? "border-red-500" : ""
+                  }
+                  type="text"
+                  id="full_name"
+                  {...register("full_name")}
+                />
+                {errors && "full_name" in errors && (
+                  <p className="text-red-500 mt-1">
+                    {errors.full_name?.message?.toString()}
+                  </p>
+                )}
+              </div>
+              <div>
+                <Label htmlFor="short_name" className="mb-2 block">
+                  Short Name
+                </Label>
+                <Input
+                  className={
+                    errors && "short_name" in errors ? "border-red-500" : ""
+                  }
+                  type="text"
+                  id="short_name"
+                  {...register("short_name")}
+                />
+                {errors && "short_name" in errors && (
+                  <p className="text-red-500 mt-1">
+                    {errors.short_name?.message?.toString()}
+                  </p>
+                )}
+              </div>
             </div>
           </>
         ) : (
           <>
-            <div className="mb-4">
-              <Label>Is PESEL</Label>
+            <div className="mb-6">
+              <Label className="mb-2 block">Is PESEL</Label>
               <RadioGroup
-                className="flex gap-4"
+                className="flex gap-6"
                 defaultValue={isPESEL ? "true" : "false"}
               >
                 <div className="flex items-center space-x-3">
@@ -148,144 +156,158 @@ export default function TempForm() {
               </RadioGroup>
             </div>
             {isPESEL ? (
-              <>
-                <div>
-                  <Label htmlFor="PESEL">PESEL</Label>
-                  <Input
-                    className={
-                      natural_person &&
-                      "type" in errors &&
-                      errors.type &&
-                      "PESEL" in errors.type
-                        ? "border-red-500"
-                        : ""
-                    }
-                    type="text"
-                    id="PESEL"
-                    {...register("type.PESEL")}
-                  />
-                </div>
+              <div className="mb-4">
+                <Label htmlFor="PESEL" className="mb-2 block">
+                  PESEL
+                </Label>
+                <Input
+                  className={
+                    natural_person &&
+                    "type" in errors &&
+                    errors.type &&
+                    "PESEL" in errors.type
+                      ? "border-red-500"
+                      : ""
+                  }
+                  type="text"
+                  id="PESEL"
+                  {...register("type.PESEL")}
+                />
                 {natural_person &&
                   "type" in errors &&
                   errors.type &&
                   "PESEL" in errors.type && (
-                    <p className="text-red-500">
+                    <p className="text-red-500 mt-1">
                       {(errors.type.PESEL as FieldError)?.message?.toString()}
                     </p>
                   )}
-              </>
+              </div>
             ) : (
-              <>
-                <div>
-                  <Label htmlFor="NIP">NIP</Label>
-                  <Input
-                    className={
-                      natural_person &&
-                      "type" in errors &&
-                      errors.type &&
-                      "NIP" in errors.type
-                        ? "border-red-500"
-                        : ""
-                    }
-                    type="text"
-                    id="NIP"
-                    {...register("type.NIP")}
-                  />
-                  {natural_person &&
+              <div className="mb-4">
+                <Label htmlFor="NIP" className="mb-2 block">
+                  NIP
+                </Label>
+                <Input
+                  className={
+                    natural_person &&
                     "type" in errors &&
                     errors.type &&
-                    "NIP" in errors.type && (
-                      <p className="text-red-500">
-                        {(errors.type.NIP as FieldError)?.message?.toString()}
-                      </p>
-                    )}
-                </div>
-              </>
+                    "NIP" in errors.type
+                      ? "border-red-500"
+                      : ""
+                  }
+                  type="text"
+                  id="NIP"
+                  {...register("type.NIP")}
+                />
+                {natural_person &&
+                  "type" in errors &&
+                  errors.type &&
+                  "NIP" in errors.type && (
+                    <p className="text-red-500 mt-1">
+                      {(errors.type.NIP as FieldError)?.message?.toString()}
+                    </p>
+                  )}
+              </div>
             )}
-            <div>
-              <Label htmlFor="first_name">First Name</Label>
-              <Input
-                className={
-                  errors && "first_name" in errors ? "border-red-500" : ""
-                }
-                type="text"
-                id="first_name"
-                {...register("first_name")}
-              />
-              {errors && "first_name" in errors && (
-                <p className="text-red-500">
-                  {errors.first_name?.message?.toString()}
-                </p>
-              )}
-            </div>
-            <div>
-              <Label htmlFor="last_name">Last Name</Label>
-              <Input
-                className={
-                  errors && "last_name" in errors ? "border-red-500" : ""
-                }
-                type="text"
-                id="last_name"
-                {...register("last_name")}
-              />
-              {errors && "last_name" in errors && (
-                <p className="text-red-500">
-                  {errors.last_name?.message?.toString()}
-                </p>
-              )}
-            </div>
-            <div>
-              <Label htmlFor="father_name">Father Name</Label>
-              <Input
-                className={
-                  errors && "father_name" in errors ? "border-red-500" : ""
-                }
-                type="text"
-                id="father_name"
-                {...register("father_name")}
-              />
-              {errors && "father_name" in errors && (
-                <p className="text-red-500">
-                  {errors.father_name?.message?.toString()}
-                </p>
-              )}
-            </div>
-            <div>
-              <Label htmlFor="mother_name">Mother Name</Label>
-              <Input
-                className={
-                  errors && "mother_name" in errors ? "border-red-500" : ""
-                }
-                type="text"
-                id="mother_name"
-                {...register("mother_name")}
-              />
-              {errors && "mother_name" in errors && (
-                <p className="text-red-500">
-                  {errors.mother_name?.message?.toString()}
-                </p>
-              )}
-            </div>
-            <div>
-              <Label htmlFor="date_of_birth">Date of Birth</Label>
-              <Input
-                className={
-                  errors && "date_of_birth" in errors ? "border-red-500" : ""
-                }
-                type="date"
-                id="date_of_birth"
-                {...register("date_of_birth")}
-              />
-              {errors && "date_of_birth" in errors && (
-                <p className="text-red-500">
-                  {errors.date_of_birth?.message?.toString()}
-                </p>
-              )}
+            <div className="space-y-4">
+              <div>
+                <Label htmlFor="first_name" className="mb-2 block">
+                  First Name
+                </Label>
+                <Input
+                  className={
+                    errors && "first_name" in errors ? "border-red-500" : ""
+                  }
+                  type="text"
+                  id="first_name"
+                  {...register("first_name")}
+                />
+                {errors && "first_name" in errors && (
+                  <p className="text-red-500 mt-1">
+                    {errors.first_name?.message?.toString()}
+                  </p>
+                )}
+              </div>
+              <div>
+                <Label htmlFor="last_name" className="mb-2 block">
+                  Last Name
+                </Label>
+                <Input
+                  className={
+                    errors && "last_name" in errors ? "border-red-500" : ""
+                  }
+                  type="text"
+                  id="last_name"
+                  {...register("last_name")}
+                />
+                {errors && "last_name" in errors && (
+                  <p className="text-red-500 mt-1">
+                    {errors.last_name?.message?.toString()}
+                  </p>
+                )}
+              </div>
+              <div>
+                <Label htmlFor="father_name" className="mb-2 block">
+                  Father Name
+                </Label>
+                <Input
+                  className={
+                    errors && "father_name" in errors ? "border-red-500" : ""
+                  }
+                  type="text"
+                  id="father_name"
+                  {...register("father_name")}
+                />
+                {errors && "father_name" in errors && (
+                  <p className="text-red-500 mt-1">
+                    {errors.father_name?.message?.toString()}
+                  </p>
+                )}
+              </div>
+              <div>
+                <Label htmlFor="mother_name" className="mb-2 block">
+                  Mother Name
+                </Label>
+                <Input
+                  className={
+                    errors && "mother_name" in errors ? "border-red-500" : ""
+                  }
+                  type="text"
+                  id="mother_name"
+                  {...register("mother_name")}
+                />
+                {errors && "mother_name" in errors && (
+                  <p className="text-red-500 mt-1">
+                    {errors.mother_name?.message?.toString()}
+                  </p>
+                )}
+              </div>
+              <div>
+                <Label htmlFor="date_of_birth" className="mb-2 block">
+                  Date of Birth
+                </Label>
+                <Input
+                  className={
+                    errors && "date_of_birth" in errors ? "border-red-500" : ""
+                  }
+                  type="date"
+                  id="date_of_birth"
+                  {...register("date_of_birth")}
+                />
+                {errors && "date_of_birth" in errors && (
+                  <p className="text-red-500 mt-1">
+                    {errors.date_of_birth?.message?.toString()}
+                  </p>
+                )}
+              </div>
             </div>
           </>
         )}
 
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className="mt-6">
+          Submit
+        </Button>
       </form>
     </div>
   );

@@ -20,7 +20,7 @@ export default function Chat() {
   };
 
   return (
-    <div className="w-1/3 bg-gray-100 p-4 rounded-lg">
+    <div className="max-w-[450px] bg-gray-100 p-4 rounded-lg">
       <div className="h-[calc(100vh-16rem)] flex flex-col">
         <div className="flex-grow overflow-auto mb-4 space-y-4 text-black">
           {messages.map((message, index) => (

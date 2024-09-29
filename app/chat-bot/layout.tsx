@@ -7,7 +7,7 @@ export default function ChatBotLayout({
 }) {
   return (
     <div className="flex justify-center">
-      <div className="flex bg-gray-100 gap-8 max-w-screen-xl justify-center">
+      <div className="flex bg-gray-100 gap-8 w-full px-4 justify-center">
         <OldChatsSidebar />
         {children}
       </div>
