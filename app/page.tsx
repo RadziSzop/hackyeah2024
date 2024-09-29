@@ -101,7 +101,6 @@ export default function Component() {
               <Link href="/sign-in">
                 <Button
                   size="lg"
-                  onClick={() => console.log("clicked")}
                   className="bg-red-700 hover:bg-red-800 text-white"
                 >
                   Zacznij teraz
