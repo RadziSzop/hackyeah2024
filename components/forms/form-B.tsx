@@ -33,7 +33,7 @@ export default function TempForm() {
   const isPESEL = watch("type.isPESEL");
 
   return (
-    <div className="flex-grow border-r min-w-[400px] border-gray-300 pr-4 p-6">
+    <div className="flex-grow min-w-[400px] pr-4 p-6">
       <h2 className="text-2xl font-semibold mb-6 text-blue-950">Sekcja B</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="mb-6">

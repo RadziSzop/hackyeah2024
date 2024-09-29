@@ -33,7 +33,7 @@ export default function FormC() {
   const location_of_transaction = watch("location_of_transaction");
   console.log(errors);
   return (
-    <div className="flex-grow border-r min-w-[400px] border-gray-300 pr-4 p-6">
+    <div className="flex-grow min-w-[400px] pr-4 p-6">
       <h2 className="text-2xl font-semibold mb-6 text-blue-950">Sekcja C</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="mb-6">
@@ -98,7 +98,9 @@ export default function FormC() {
           </RadioGroup>
         </div>
         <div className="mb-6">
-          <Label className="mb-2 block">Miejsce położenia rzeczy lub miejsce wykonywania prawa majątkowego</Label>
+          <Label className="mb-2 block">
+            Miejsce położenia rzeczy lub miejsce wykonywania prawa majątkowego
+          </Label>
 
           <RadioGroup
             className="flex flex-wrap gap-6"
@@ -139,7 +141,9 @@ export default function FormC() {
           </RadioGroup>
         </div>
         <div className="mb-6">
-          <Label className="mb-2 block">Miejsce dokonania czynności cywilnoprawnej</Label>
+          <Label className="mb-2 block">
+            Miejsce dokonania czynności cywilnoprawnej
+          </Label>
 
           <RadioGroup
             className="flex flex-wrap gap-6"
@@ -182,7 +186,9 @@ export default function FormC() {
           </RadioGroup>
         </div>
         <div className="mb-6">
-          <Label className="mb-2 block">Zwięzłe określenie treści i przedmiotu czynności cywilnoprawnej</Label>
+          <Label className="mb-2 block">
+            Zwięzłe określenie treści i przedmiotu czynności cywilnoprawnej
+          </Label>
           <Input {...register("short_action_description")} />
         </div>
         <Button type="submit" className="mt-6">
