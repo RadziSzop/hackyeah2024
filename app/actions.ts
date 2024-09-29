@@ -99,7 +99,7 @@ export const askAI = async (formData: FormData) => {
       // SECTION A
       date_of_action: z.string().describe("Data wykonania czynności, jeśli jej nie ma, wpisz 'brak'"),
       // tax_office: z.string().describe("Nazwa urzędu skarbowego, w którym jest zarejestrowana osoba, której dotyczy pytanie"),
-      tax_office: z.enum(declarationOfficesKeys).describe("Nazwa urzędu skarbowego, w którym jest zarejestrowana osoba, której dotyczy pytanie"),
+      tax_office: z.enum(declarationOfficesKeys  as [string, ...string[]]).describe("Nazwa urzędu skarbowego, w którym jest zarejestrowana osoba, której dotyczy pytanie"),
       purpose_of_action: z.enum(["Złożenie Deklaracji", "Korekta Deklaracji", "brak"])
       .describe("Cel czynności, której dotyczy pytanie."),
       

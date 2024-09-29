@@ -1,11 +1,26 @@
+import { declarationOffices } from "@/app/types/formTypes";
 import { z } from "zod";
 
-const schemaA = z.object({
+let declarationOfficesKeys = Object.keys(declarationOffices) as Array<keyof typeof declarationOffices>;
+
+
+const schemaA_base = z.object({
     date_of_action: z.string().date(),
-    tax_office: z.enum(['']),
+    tax_office: z.enum(declarationOfficesKeys as [string, ...string[]]),
+    purpose_of_action: z.enum(["Złożenie Deklaracji", "Korekta Deklaracji", "brak"]),
 })
 
-const schemaB = z.object({
+const purpose_correction = schemaA_base.extend({
+    purpose_of_action: z.literal("Korekta Deklaracji"),
+    reason_for_correction: z.string().max(2000).optional(),
+})
+
+const schemaA = z.discriminatedUnion("purpose_of_action", [
+    schemaA_base,
+    purpose_correction,
+])
+
+const schemaB_base = z.object({
   subject: z.enum([
     "Podmiot zobowiązany solidarnie do zapłaty podatku",
     "Strona umowy zamiany",
@@ -25,7 +40,7 @@ const schemaB = z.object({
   postal_code: z.string().length(6).regex(/\d\d-\d\d\d/),
 })
 
-const natural_person = schemaB.extend({
+const natural_person = schemaB_base.extend({
   natural_person: z.literal(true),
   type: z.discriminatedUnion("isPESEL", [
     z.object({
@@ -62,7 +77,7 @@ const natural_person = schemaB.extend({
     .min(2, "Imię matki musi mieć co najmniej 2 znaki"),
 });
 
-const not_natural_person_nip = schemaB.extend({
+const not_natural_person_nip = schemaB_base.extend({
   natural_person: z.literal(false),
   NIP: z
     .string()
