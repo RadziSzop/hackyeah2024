@@ -38,7 +38,6 @@ export default function FormD({
   const p38 = watch("p38");
   const p40 = watch("p40");
   const p43 = watch("p43");
-  console.log(p43a, p44, type_of_transaction);
   return (
     <div className="flex-grow border-r min-w-[400px] border-gray-300 pr-4 p-6">
       <h2 className="text-2xl font-semibold mb-6 text-blue-950">Sekcja D</h2>
