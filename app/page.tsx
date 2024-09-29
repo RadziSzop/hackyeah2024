@@ -1,37 +1,12 @@
-"use client";
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { createClient } from "@/utils/supabase/server";
 
-export default function Component() {
-  const [messages, setMessages] = useState([
-    {
-      role: "assistant",
-      content:
-        "Welcome to the official government tax assistant. How can I help you today?",
-    },
-  ]);
-  const [inputMessage, setInputMessage] = useState("");
-
-  const sendMessage = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (inputMessage.trim() === "") return;
-
-    setMessages([...messages, { role: "user", content: inputMessage }]);
-    // Here you would typically send the message to your backend and get a response
-    // For this example, we'll just echo the message back
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: `You asked: "${inputMessage}". How else can I assist you with your tax filing?`,
-        },
-      ]);
-    }, 1000);
-    setInputMessage("");
-  };
-
+export default async function Component() {
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   return (
     <div className="flex flex-col w-full h-full overflow-hidden">
       <div className="flex-grow flex flex-col lg:flex-row relative">
@@ -98,7 +73,7 @@ export default function Component() {
               <p className="text-xl mb-8">
                 Otrzymaj indywidualną pomoc i złóż swoje podatki z pewnością
               </p>
-              <Link href="/sign-in">
+              <Link href={user ? "/chat-bot" : "/sign-in"}>
                 <Button
                   size="lg"
                   className="bg-red-700 hover:bg-red-800 text-white"
