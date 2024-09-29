@@ -6,6 +6,8 @@ import FormA from "@/components/forms/form-A";
 import FormB from "@/components/forms/form-B";
 import FormC from "@/components/forms/form-C";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Button } from "@/components/ui/button";
+import FormD from "@/components/forms/form-D";
 
 export default async function ChatBot() {
   const supabase = createClient();
@@ -25,6 +27,7 @@ export default async function ChatBot() {
           <FormA />
           <FormB />
           <FormC />
+          <FormD />
         </ScrollArea>
       </div>
       <Chat />
