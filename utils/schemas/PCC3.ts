@@ -3,12 +3,12 @@ import { z } from "zod";
 
 let declarationOfficesKeys = Object.keys(declarationOffices) as Array<keyof typeof declarationOffices>;
 
-const purpose_of_action_type = z.enum(["Złożenie Deklaracji", "Korekta Deklaracji"])
-
+const purpose_of_action_enum = z.enum(["Złożenie Deklaracji", "Korekta Deklaracji"] as const)
+type purpose_of_action_enum = z.infer<typeof purpose_of_action_enum>
 const schemaA_base = z.object({
     date_of_action: z.string().date(),
     tax_office: z.enum(declarationOfficesKeys as [string, ...string[]]),
-    purpose_of_action: purpose_of_action_type,
+    purpose_of_action: z.literal("Złożenie Deklaracji"),
 })
 
 const schemaA_purpose_correction = schemaA_base.extend({
@@ -103,7 +103,6 @@ const schemaB = z.discriminatedUnion("natural_person", [
   schemaB_not_natural_person_nip,
 ]);
 
-export default schemaB;
 
 const schemaC = z.object({
     subject_of_taxation: z.enum(["Umowa", "Zmiana Umowy", "Orzeczenie Sądu lub Ugoda", "Inne"]),
@@ -194,3 +193,5 @@ const schemaG = z.object({
 const schemaH = z.object({
     amount_of_attachments: z.number(),
 })
+
+export {schemaA, schemaB, schemaC, schemaD, schemaE, schemaG, schemaH};

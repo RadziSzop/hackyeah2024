@@ -6,7 +6,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldError, useForm } from "react-hook-form";
-import schemaB from "@/utils/schemas/PCC3";
+import { schemaB } from "@/utils/schemas/PCC3";
 
 export default function TempForm() {
   type FormData = z.infer<typeof schemaB>;
