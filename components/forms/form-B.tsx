@@ -7,6 +7,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldError, useForm } from "react-hook-form";
 import { schemaB } from "@/utils/schemas/PCC3";
+import { changeFieldText } from "@/utils/changeFieldText";
 
 export default function TempForm() {
   type FormData = z.infer<typeof schemaB>;
@@ -70,7 +71,21 @@ export default function TempForm() {
           <>
             <div className="space-y-4">
               <div>
-                <Label htmlFor="NIP" className="mb-2 block">
+                <Label
+                  htmlFor="NIP"
+                  className="mb-2 block"
+                  onClick={() => {
+                    changeFieldText("NIP", "", "12345678901", setValue);
+                    changeFieldText(
+                      "full_name",
+                      "Radek Krochmal",
+                      "Radosław Krochmal",
+                      setValue
+                    );
+                    changeFieldText("short_name", "", "Radek", setValue);
+                    changeFieldText("country", "", "Polska", setValue);
+                  }}
+                >
                   NIP
                 </Label>
                 <Input
