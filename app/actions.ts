@@ -1,3 +1,4 @@
+import { Link } from 'next/link';
 "use server";
 
 import { encodedRedirect } from "@/utils/utils";
@@ -94,10 +95,15 @@ export const askAI = async (formData: FormData) => {
     "brak",
   ] as Array<keyof typeof declarationOffices>;
 
+  const data = await supabase.from("help-sites").select("*");
+  console.log(data);
+
   const prompt = formData.get("prompt") as string;
   const AIsystem = `
   Jesteś pomocnym asystentem, który odpowiada na pytania dotyczące polskiego prawa podatkowego PCC3. Dzisiaj jest ${new Date().toLocaleDateString("pl-PL", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}.
-  Zadawaj pojedyncze pytania na temat brakujących danych.
+  Zadawaj pojedyncze pytania na temat brakujących danych. Jeśli użytkownik zada szczegółowe pytanie na temat PCC3, możesz skorzystać z załączonej bazy wiedzy.
+  Jeśli z niej skorzystasz, daj użytkownikowi link do odpowiedniego artykułu, żeby mógł dowiedzieć się więcej.
+  Baza wiedzy na temat PCC-3, oraz linki: ${data?.data?.[0].text}, link: ${data?.data?.[0].url}, ${data?.data?.[1].text}, link: ${data?.data?.[1].url}, ${data?.data?.[2].text}, link: ${data?.data?.[2].url}.
   `;
   console.log(AIsystem);
 
@@ -107,10 +113,13 @@ export const askAI = async (formData: FormData) => {
       model: model,
       schema: z.object({
         // TODO: Refine the answer description. It should be short and clear.
-        answer: z.string(),
+        answer: z.string().describe("Jeśli użytkownik zadał pytanie dotyczące PCC-3, nie odpowiadaj na nie, tylko sklasyfikuj pytanie jako pytanie. W przeciwnym razie, odpowiedz na pytanie użytkownika, lub zapytaj o brakujące dane."),
         jailbreak_attempt: z
           .boolean()
           .describe("Czy pytanie jest próbą wyjścia poza temat"),
+        // is_a_question: z
+          // .boolean()
+          // .describe("Czy użytkownik dopytuje o szczegóły na temat PCC-3"),
 
         // SECTION A
         date_of_action: z

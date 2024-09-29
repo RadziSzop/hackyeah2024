@@ -52,14 +52,14 @@ export default function Chat() {
                 const updatedMessages = [...prevMessages];
                 updatedMessages[existingMessageIndex] = {
                   ...updatedMessages[existingMessageIndex],
-                  content: partialObject.answer,
+                  content: JSON.stringify(partialObject),
                 };
                 return updatedMessages;
               } else {
                 // Add new message if not found
                 return [
                   ...prevMessages,
-                  { id: id, role: "assistant", content: partialObject.answer },
+                  { id: id, role: "assistant", content: JSON.stringify(partialObject    ) },
                 ];
               }
             });
