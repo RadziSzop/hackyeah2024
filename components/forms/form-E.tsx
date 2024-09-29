@@ -56,7 +56,7 @@ export default function FormA() {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="mb-6">
           <div className="mb-6">
-            <Label className="mb-2 block">Typ spółki</Label>
+            <Label className="mb-2 block">47. Typ spółki</Label>
 
             <RadioGroup
               className="flex flex-wrap gap-6"
@@ -88,7 +88,7 @@ export default function FormA() {
           </div>
         </div>
         <div className="mb-6">
-          <Label className="mb-2 block">Urząd skarbowy</Label>
+          <Label className="mb-2 block">48. Podstawa opodatkowania dotyczy</Label>
           <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
               <Button
@@ -156,7 +156,7 @@ export default function FormA() {
           </Popover>
         </div>
         <div className="mb-6">
-          <Label className="mb-2 block">Kwota</Label>
+          <Label className="mb-2 block">49. Podstawa opodatkowania - określona zgodnie z art. 6 ust. 1 pkt 8 ustawy zł</Label>
           <Input
             className={errors && "p49" in errors ? "border-red-500" : ""}
             type="number"
@@ -168,7 +168,7 @@ export default function FormA() {
           )}
         </div>
         <div className="mb-6">
-          <Label className="mb-2 block">Kwota</Label>
+          <Label className="mb-2 block">50. Opłaty i koszty związane z zawarciem umowy spółki lub jej zmiany - na podstawie art. 6 ust. 9 ustawy zł</Label>
           <Input
             className={errors && "p50" in errors ? "border-red-500" : ""}
             type="number"
@@ -180,14 +180,14 @@ export default function FormA() {
           )}
         </div>
         <div className="mb-6">
-          <Label className="mb-2 block">Kwota</Label>
+          <Label className="mb-2 block">51. Podstawa obliczenia podatku</Label>
           <Input type="number" id="p51" />
         </div>
         <div className="mb-6">
-          <Label className="mb-2 block">Kwota</Label>
+          <Label className="mb-2 block">52. Kwota należnego podatku</Label>
           <Input type="number" id="p52" />
         </div>
-        <Button type="submit" className="mt-6 -translate-y-6">
+        <Button type="submit" className="mt-6">
           Zweryfikuj
         </Button>
       </form>

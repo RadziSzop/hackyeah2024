@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Deklaracja xmlns="http://crd.gov.pl/wzor/2023/12/13/13064/">
+  <Naglowek>
+    <KodFormularza kodSystemowy="PCC-3 (6)" kodPodatku="PCC" rodzajZobowiazania="Z" wersjaSchemy="1-0E">PCC-3</KodFormularza>
+    <WariantFormularza>6</WariantFormularza>
+    <CelZlozenia poz="P_6">2</CelZlozenia>
+    <Data poz="P_4">2024-09-12</Data>
+    <KodUrzedu>0271</KodUrzedu>
+  </Naglowek>
+  <Podmiot1 rola="Podatnik">
+    <OsobaFizyczna>
+      <PESEL>02271907259</PESEL>
+      <ImiePierwsze>JAKUB</ImiePierwsze>
+      <Nazwisko>JAKUB</Nazwisko>
+      <DataUrodzenia>2002-07-19</DataUrodzenia>
+    </OsobaFizyczna>
+    <OsobaNiefizyczna>
+      <NIP>1234563218</NIP>
+      <PESEL>02271907259</PESEL>
+      <PelnaNazwa>NAZWA PELNA</PelnaNazwa>
+      <SkroconaNazwa>NAZWA SKROCONA</SkroconaNazwa>
+    </OsobaNiefizyczna>
+    <AdresZamieszkaniaSiedziby rodzajAdresu="RAD">
+      <AdresPol>
+        <KodKraju>PL</KodKraju>
+        <Wojewodztwo>DOLNOŚLĄSKIE</Wojewodztwo>
+        <Powiat>GÓROWSKI</Powiat>
+        <Gmina>GÓRA</Gmina>
+        <NrDomu>2137</NrDomu>
+        <Miejscowosc>BRUHOWICE DOLNE</Miejscowosc>
+        <KodPocztowy>21-362</KodPocztowy>
+      </AdresPol>
+    </AdresZamieszkaniaSiedziby>
+  </Podmiot1>
+  <PozycjeSzczegolowe>
+    <P_7>1</P_7>
+    <P_20>4</P_20>
+    <P_21>2</P_21>
+    <P_22>2</P_22>
+    <P_23>bruhmoment</P_23>
+    <P_24>100</P_24>
+    <P_25>1</P_25>
+    <P_26>100</P_26>
+    <P_27>2</P_27>
+    <P_28>100</P_28>
+    <P_29>1</P_29>
+    <P_30>1</P_30>
+    <P_31>100</P_31>
+    <P_32>2</P_32>
+    <P_33>2</P_33>
+    <P_34>100</P_34>
+    <P_35>2</P_35>
+    <P_36>2</P_36>
+    <P_37>100</P_37>
+    <P_38>20</P_38>
+    <P_39></P_39>
+    <P_40>500</P_40>
+    <P_41>1</P_41>
+    <P_42>19</P_42>
+    <P_43A>Orzeczenie sądu</P_43A>
+    <P_43>1000</P_43>
+    <P_44>2</P_44>
+    <P_45>20</P_45>
+    <P_46>1</P_46>
+    <P_47>2</P_47>
+    <P_48>1</P_48>
+    <P_49>1010</P_49>
+    <P_50>10</P_50>
+    <P_51>1000</P_51>
+    <P_52>5</P_52>
+    <P_53>0</P_53>
+    <P_54>LUBUSKIE</P_54>
+    <P_55>GORZOWSKI</P_55>  
+    <P_56>DESZCZNO</P_56>
+    <P_58>2323</P_58>
+    <P_60>ASDFASDF</P_60>
+    <P_61>12-324</P_61>
+    <P_62>0</P_62>
+  </PozycjeSzczegolowe>
+  <Pouczenia>1</Pouczenia>
+</Deklaracja>
