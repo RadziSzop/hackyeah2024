@@ -26,6 +26,18 @@ export default function FormC() {
   const type_of_transaction = watch("type_of_transaction");
   const p43a = watch("p43a");
   const p44 = watch("p44");
+  const p24 = watch("p24");
+  const p26 = watch("p26");
+  const p28 = watch("p28");
+  const p29 = watch("p29");
+  const p31 = watch("p31");
+  const p32 = watch("p32");
+  const p34 = watch("p34");
+  const p35 = watch("p35");
+  const p37 = watch("p37");
+  const p38 = watch("p38");
+  const p40 = watch("p40");
+  const p43 = watch("p43");
   console.log(p43a, p44, type_of_transaction);
   return (
     <div className="flex-grow border-r min-w-[400px] border-gray-300 pr-4 p-6">
@@ -187,7 +199,7 @@ export default function FormC() {
               <Label className="mb-2 block">
               42. Ustanowienie hipoteki na zabezpieczenie wierzytelności o wysokości nieustalonej - obliczony należny podatek zł 
               </Label>
-              <Input type="text" id="p42" />
+              <Input value={19}type="text" id="p42" />
             </div>
           </>
         )}
@@ -218,7 +230,7 @@ export default function FormC() {
                 wysokości nieustalonej - stawka podatku określona zgodnie z art.
                 7 ustawy
               </Label>
-              <Input type="text" id="p41" />
+              <Input value={p40 ? Math.round(p40 / 1000) : 0} type="text" id="p41" />
             </div>
           </>
         )}
@@ -279,6 +291,7 @@ export default function FormC() {
                 obliczony należny podatek zł
               </Label>
               <Input
+                value={p38 && p37 ? Math.round(p37 * parseInt(p38) / 100) : 0}
                 className={errors && "p39" in errors ? "border-red-500" : ""}
                 type="text"
                 id="p39"
@@ -345,6 +358,7 @@ export default function FormC() {
                 obliczony należny podatek zł
               </Label>
               <Input
+                value={p35 && p34 ? Math.round(p34 * parseInt(p35) / 100) : 0}
                 className={errors && "p36" in errors ? "border-red-500" : ""}
                 type="text"
                 id="p36"
@@ -433,6 +447,7 @@ export default function FormC() {
                 podatek zł
               </Label>
               <Input
+                value={p32 && p31 ? Math.round(p31 * parseFloat(p32) / 100) : 0}
                 className={errors && "p33" in errors ? "border-red-500" : ""}
                 type="text"
                 id="p33"
@@ -494,6 +509,7 @@ export default function FormC() {
                 30. Umowa zamiany - obliczony należny podatek zł
               </Label>
               <Input
+                value={p29 && p28 ? Math.round(p28 * parseInt(p29) / 100) : 0}
                 className={errors && "p30" in errors ? "border-red-500" : ""}
                 type="text"
                 id="p30"
@@ -526,6 +542,7 @@ export default function FormC() {
                 zł
               </Label>
               <Input
+                value={p24 ? Math.round(p24 * 0.01) : 0}
                 className={errors && "p25" in errors ? "border-red-500" : ""}
                 type="text"
                 id="p25"
@@ -548,6 +565,7 @@ export default function FormC() {
             <div className="mb-6 flex flex-col gap-4">
               <Label className="mb-2 block">27. Umowa sprzedaży (stawka podatku 2%) - obliczony należny podatek</Label>
               <Input
+                value={p26 ? Math.round(p26 * 0.02) : 0}
                 className={errors && "p27" in errors ? "border-red-500" : ""}
                 type="text"
                 id="p27"
@@ -721,6 +739,7 @@ export default function FormC() {
                 45. Inna czynność - obliczony należny podatek
               </Label>
               <Input
+                value={p43 && p44 ? Math.round(p43 * parseInt(p44) / 100) : 0}
                 className={errors && "p45" in errors ? "border-red-500" : ""}
                 type="text"
                 id="p45"
@@ -731,6 +750,17 @@ export default function FormC() {
         <div className="mb-6 flex flex-col gap-4">
           <Label className="mb-2 block">46. Kwota należnego podatku zł</Label>
           <Input
+            value={
+              type_of_transaction === "umowa sprzedaży" ? Math.round(p24 * 0.01) + Math.round(p26 * 0.02) :
+              type_of_transaction === "umowa zamiany" ? Math.round(p28 * parseInt(p29) / 100) :
+              type_of_transaction === "umowa darowizny w części dotyczącej przejęcia przez obdarowanego długów i ciężarów lub zobowiązań darczyńcy" ? Math.round(p34 * parseInt(p35) / 100)  :
+              type_of_transaction === "ustanowienie odpłatnego użytkowania, w tym nieprawidłowego" ? p37 * parseInt(p38) / 100 :
+              type_of_transaction === "ustanowienie hipoteki na zabezpieczenie wierzytelności istniejących" ? Math.round(p40 / 1000) :
+              type_of_transaction === "ustanowienie hipoteki na zabezpieczenie wierzytelności o wysokości nieustalonej" ? 19 :
+              type_of_transaction === "umowa pożyczki lub depozytu nieprawidłowego, w tym zwolniona na podstawie art. 9 pkt 10 lit.b ustawy" ? Math.round(p31 * parseFloat(p32) / 100) :
+              type_of_transaction === "inna czynność" ? Math.round(p43 * parseInt(p44) / 100) :
+              0
+            }
             className={errors && "p46" in errors ? "border-red-500" : ""}
             type="text"
             id="p46"
