@@ -140,6 +140,7 @@ export default function StateLoader() {
     setValue,
   } = useForm<FormData>({
     defaultValues: {
+      // @ts-ignore
       purpose_of_action: "Złożenie Deklaracji",
       natural_person: false,
       // @ts-ignore
