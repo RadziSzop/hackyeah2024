@@ -17,7 +17,7 @@ export default function Chat() {
     {
       role: "assistant",
       content:
-        "Welcome to the tax assistant chat! How can I help you fill out your tax form today?",
+        "Witam! Jestem Podatkomat! Jak mogę pomóc?",
     },
   ]);
   const [inputMessage, setInputMessage] = useState("");
@@ -52,14 +52,14 @@ export default function Chat() {
                 const updatedMessages = [...prevMessages];
                 updatedMessages[existingMessageIndex] = {
                   ...updatedMessages[existingMessageIndex],
-                  content: partialObject.answer,
+                  content: JSON.stringify(partialObject),
                 };
                 return updatedMessages;
               } else {
                 // Add new message if not found
                 return [
                   ...prevMessages,
-                  { id: id, role: "assistant", content: partialObject.answer },
+                  { id: id, role: "assistant", content: JSON.stringify(partialObject    ) },
                 ];
               }
             });
@@ -72,7 +72,7 @@ export default function Chat() {
         ...prevMessages,
         {
           role: "assistant",
-          content: "Sorry, I encountered an error. Please try again.",
+          content: "Wybacz, napotkałem problem. Proszę spróbuj ponownie.",
         },
       ]);
     } finally {
@@ -106,7 +106,7 @@ export default function Chat() {
           <div className="flex space-x-2">
             <Input
               type="text"
-              placeholder="Type your message..."
+              placeholder="Napisz wiadomość..."
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
               className="flex-grow"

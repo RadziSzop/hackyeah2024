@@ -18,6 +18,11 @@ export default function FormC() {
     formState: { errors },
     setValue,
   } = useForm<FormData>({
+    defaultValues: {
+      subject_of_taxation: "Umowa",
+      location_of_item: "terytorium RP",
+      location_of_transaction: "terytorium RP",
+    },
     resolver: zodResolver(schemaC),
   });
 
@@ -29,10 +34,10 @@ export default function FormC() {
   console.log(errors);
   return (
     <div className="flex-grow border-r min-w-[400px] border-gray-300 pr-4 p-6">
-      <h2 className="text-2xl font-semibold mb-6 text-blue-950">Tax Form</h2>
+      <h2 className="text-2xl font-semibold mb-6 text-blue-950">Sekcja C</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="mb-6">
-          <Label className="mb-2 block">Subject of Taxation</Label>
+          <Label className="mb-2 block">Przedmiot opodatkowania</Label>
 
           <RadioGroup
             className="flex flex-wrap gap-6"
@@ -93,7 +98,7 @@ export default function FormC() {
           </RadioGroup>
         </div>
         <div className="mb-6">
-          <Label className="mb-2 block">Location of Item</Label>
+          <Label className="mb-2 block">Miejsce położenia rzeczy lub miejsce wykonywania prawa majątkowego</Label>
 
           <RadioGroup
             className="flex flex-wrap gap-6"
@@ -134,7 +139,7 @@ export default function FormC() {
           </RadioGroup>
         </div>
         <div className="mb-6">
-          <Label className="mb-2 block">Location of Transaction</Label>
+          <Label className="mb-2 block">Miejsce dokonania czynności cywilnoprawnej</Label>
 
           <RadioGroup
             className="flex flex-wrap gap-6"
@@ -177,11 +182,11 @@ export default function FormC() {
           </RadioGroup>
         </div>
         <div className="mb-6">
-          <Label className="mb-2 block">Short Action Description</Label>
+          <Label className="mb-2 block">Zwięzłe określenie treści i przedmiotu czynności cywilnoprawnej</Label>
           <Input {...register("short_action_description")} />
         </div>
         <Button type="submit" className="mt-6">
-          Submit
+          Zweryfikuj
         </Button>
       </form>
     </div>

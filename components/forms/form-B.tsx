@@ -34,10 +34,10 @@ export default function TempForm() {
 
   return (
     <div className="flex-grow border-r min-w-[400px] border-gray-300 pr-4 p-6">
-      <h2 className="text-2xl font-semibold mb-6 text-blue-950">Tax Form</h2>
+      <h2 className="text-2xl font-semibold mb-6 text-blue-950">Sekcja B</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="mb-6">
-          <Label className="mb-2 block">Is Natural Person</Label>
+          <Label className="mb-2 block">Rodzaj podatnika</Label>
           <RadioGroup
             className="flex flex-wrap gap-6"
             defaultValue={natural_person ? "true" : "false"}
@@ -61,7 +61,7 @@ export default function TempForm() {
                 onClick={() => setValue("natural_person", false)}
               />
               <Label htmlFor="natural_person_false" className="text-lg">
-                Podmiot nie będący osobą fizyczną
+                Podmiot niebędący osobą fizyczną
               </Label>
             </div>
           </RadioGroup>
@@ -87,7 +87,7 @@ export default function TempForm() {
               </div>
               <div>
                 <Label htmlFor="full_name" className="mb-2 block">
-                  Full Name
+                  Nazwa pełna
                 </Label>
                 <Input
                   className={
@@ -105,7 +105,7 @@ export default function TempForm() {
               </div>
               <div>
                 <Label htmlFor="short_name" className="mb-2 block">
-                  Short Name
+                  Nazwa skrócona
                 </Label>
                 <Input
                   className={
@@ -126,7 +126,7 @@ export default function TempForm() {
         ) : (
           <>
             <div className="mb-6">
-              <Label className="mb-2 block">Is PESEL</Label>
+              <Label className="mb-2 block">Identyfikator podatkowy</Label>
               <RadioGroup
                 className="flex gap-6"
                 defaultValue={isPESEL ? "true" : "false"}
@@ -213,7 +213,7 @@ export default function TempForm() {
             <div className="space-y-4">
               <div>
                 <Label htmlFor="first_name" className="mb-2 block">
-                  First Name
+                  Pierwsze imię
                 </Label>
                 <Input
                   className={
@@ -231,7 +231,7 @@ export default function TempForm() {
               </div>
               <div>
                 <Label htmlFor="last_name" className="mb-2 block">
-                  Last Name
+                  Nazwisko
                 </Label>
                 <Input
                   className={
@@ -249,7 +249,7 @@ export default function TempForm() {
               </div>
               <div>
                 <Label htmlFor="father_name" className="mb-2 block">
-                  Father Name
+                  Imię ojca <i>(opcjonalne)</i>
                 </Label>
                 <Input
                   className={
@@ -267,7 +267,7 @@ export default function TempForm() {
               </div>
               <div>
                 <Label htmlFor="mother_name" className="mb-2 block">
-                  Mother Name
+                  Imię matki <i>(opcjonalne)</i>
                 </Label>
                 <Input
                   className={
@@ -285,7 +285,7 @@ export default function TempForm() {
               </div>
               <div>
                 <Label htmlFor="date_of_birth" className="mb-2 block">
-                  Date of Birth
+                  Data urodzenia
                 </Label>
                 <Input
                   className={
@@ -306,7 +306,7 @@ export default function TempForm() {
         )}
 
         <Button type="submit" className="mt-6">
-          Submit
+          Zweryfikuj
         </Button>
       </form>
     </div>

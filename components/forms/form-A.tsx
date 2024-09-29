@@ -42,6 +42,9 @@ export default function FormA() {
     watch,
     setValue,
   } = useForm<FormData>({
+    defaultValues: {
+      purpose_of_action: "Złożenie Deklaracji",
+    },
     resolver: zodResolver(schemaA),
   });
 
@@ -51,11 +54,11 @@ export default function FormA() {
   return (
     <div className="flex-grow border-r min-w-[400px] border-gray-300 pr-4 p-6">
       <h2 className="text-2xl font-semibold mb-6 text-blue-950">
-        Formularz podatkowy
+        Sekcja A
       </h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="mb-6">
-          <div>
+          <div className="mb-6">
             <Label className="mb-2 block">Data czynności</Label>
             <Input
               className={
@@ -71,7 +74,7 @@ export default function FormA() {
               </p>
             )}
           </div>
-          <div>
+          <div className="mb-6">
             <Label className="mb-2 block">Cel czynności</Label>
             <RadioGroup
               className="flex flex-wrap gap-6"
@@ -110,7 +113,7 @@ export default function FormA() {
               </p>
             )}
           </div>
-          <div>
+          <div className="mb-6">
             <Label className="mb-2 block">Urząd skarbowy</Label>
             <Popover open={open} onOpenChange={setOpen}>
               <PopoverTrigger asChild>
@@ -172,7 +175,7 @@ export default function FormA() {
           )}
         </div>
         <Button type="submit" className="mt-6">
-          Wyślij
+          Zweryfikuj
         </Button>
       </form>
     </div>

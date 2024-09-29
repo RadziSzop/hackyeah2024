@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/server";
+import { Sparkle, Sparkles, Star } from "lucide-react";
 
 export default async function Component() {
   const supabase = createClient();
@@ -12,34 +13,43 @@ export default async function Component() {
       <div className="flex-grow flex flex-col lg:flex-row relative">
         <aside className="lg:w-1/4 bg-blue-50 p-6 lg:sticky lg:top-0">
           <h3 className="text-2xl font-semibold mb-6 text-blue-950">
-            Proste Kroki do Złożenia Twoich Podatków
+            Jak nasz AI Asystent Podatkowy ułatwi Ci życie
           </h3>
           <div className="space-y-6">
             <div>
               <h4 className="text-xl font-semibold mb-2 text-blue-950">
-                1. Odpowiedz na kilka pytań
+                1. Rozpocznij rozmowę z AI
               </h4>
               <p className="text-gray-700">
-                Nasz asystent AI poprowadzi Cię przez kilka pytań dotyczących
-                Twojej sytuacji podatkowej.
+                Nasz inteligentny asystent poprowadzi Cię przez prosty dialog,
+                aby zrozumieć Twoją sytuację podatkową.
               </p>
             </div>
             <div>
               <h4 className="text-xl font-semibold mb-2 text-blue-950">
-                2. Otrzymasz rekomendacje
+                2. Błyskawiczna analiza Twoich danych
               </h4>
               <p className="text-gray-700">
-                Na podstawie Twoich odpowiedzi, otrzymasz odpowiednie formularze
-                podatkowe i odliczenia.
+                Na podstawie Twoich odpowiedzi, asystent szybko znajdzie
+                najlepsze rozwiązania i potencjalne oszczędności.
               </p>
             </div>
             <div>
               <h4 className="text-xl font-semibold mb-2 text-blue-950">
-                3. Złóż swoje podatki z pewnością
+                3. Formularze wypełnią się same
               </h4>
               <p className="text-gray-700">
-                Przejrzyj swoje informacje i złóż swoje podatki bezpiecznie
-                przez naszą oficjalną platformę.
+                Zapomnij o żmudnym wypełnianiu - AI zrobi to za Ciebie,
+                oszczędzając Twój cenny czas.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-xl font-semibold mb-2 text-blue-950">
+                4. Spokój ducha przy składaniu deklaracji
+              </h4>
+              <p className="text-gray-700">
+                Rzuć okiem na gotowe formularze, wprowadź ostatnie poprawki i
+                złóż deklarację bez stresu.
               </p>
             </div>
           </div>
@@ -68,17 +78,18 @@ export default async function Component() {
           <div className="relative z-10 h-full flex flex-col justify-between p-6 text-white">
             <section className="text-center mb-12 pt-12">
               <h2 className="text-4xl font-bold mb-4">
-                Oficjalny Asystent Podatkowy Rządu
+                Twój Osobisty Asystent Podatkowy
               </h2>
               <p className="text-xl mb-8">
-                Otrzymaj indywidualną pomoc i złóż swoje podatki z pewnością
+                Rozlicz podatki szybko i bez stresu z pomocą naszego
+                inteligentnego asystenta
               </p>
               <Link href={user ? "/chat-bot" : "/sign-in"}>
                 <Button
                   size="lg"
                   className="bg-red-700 hover:bg-red-800 text-white"
                 >
-                  Zacznij teraz
+                  Rozpocznij rozmowę <Sparkles className="ml-2" />
                 </Button>
               </Link>
             </section>
@@ -86,16 +97,17 @@ export default async function Component() {
             <section className="bg-blue-900 bg-opacity-50 p-6 rounded-lg backdrop-blur-sm">
               <div className="max-w-4xl mx-auto">
                 <h3 className="text-3xl font-semibold text-center mb-6 text-white">
-                  Jak działa nasz asystent podatkowy
+                  Dlaczego warto skorzystać z naszego AI Asystenta
                 </h3>
                 <p className="text-center text-white">
-                  Nasz zasilany SI asystent podatkowy przeprowadzi cię przez
-                  cały proces od odpowaidania na proste pytania do dostarczania
-                  spersonalizowanych rekomendacji. Dzięki intuicyjnej platformie
-                  możesz łatwo przeprowadzić się przez skomplikowane przepisy
-                  podatkowe i złożyć swoje podatki z pewnością. Nasz system
-                  gwarantuje dokładność i zgodność z przepisami oraz
-                  maksymalizuje Twoje możliwości finansowe.
+                  Wyobraź sobie, że masz osobistego eksperta podatkowego
+                  dostępnego 24/7. Nasz AI Asystent to właśnie to! Przeprowadzi
+                  Cię przez rozliczenie podatkowe tak łatwo, jakbyś rozmawiał z
+                  przyjacielem. Analizuje Twoje odpowiedzi, wypełnia formularze
+                  i dba o Twoje korzyści finansowe. Zapomnij o stresie związanym
+                  z podatkami - z naszym AI to będzie przyjemność! Oszczędź
+                  czas, nerwy i pieniądze. Pozwól AI zadbać o Twoje podatki, a
+                  Ty zajmij się tym, co naprawdę lubisz!
                 </p>
               </div>
             </section>
