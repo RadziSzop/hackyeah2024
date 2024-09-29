@@ -1,22 +1,31 @@
 import { z } from "zod";
 
-const subjectEnum = z.enum([
+const schemaA = z.object({
+    date_of_action: z.string().date(),
+    tax_office: z.enum(['']),
+})
+
+const schemaB = z.object({
+  subject: z.enum([
     "Podmiot zobowiązany solidarnie do zapłaty podatku",
     "Strona umowy zamiany",
     "Wspólnik spółki cywilnej",
     "Podmiot, o którym mowa w art. 9 pkt 10 lit. b ustawy (pożyczkobiorca)",
     "Inny podmiot"
-]);
-
-type SubjectEnum = z.infer<typeof subjectEnum>;
-
-const baseSchema = z.object({
-  subject: subjectEnum,
+]),
   natural_person: z.boolean(),
   isPESEL: z.boolean(),
+  country: z.string().length(2),
+  voivodeship: z.string().max(255).min(2),
+  county: z.string().max(255).min(2),
+  commune: z.string().max(255).min(2),
+  street: z.string().max(255).min(2).optional(),
+  house_number: z.string().max(255).min(2),
+  apartment_number: z.string().max(255).min(2).optional(),
+  postal_code: z.string().length(6).regex(/\d\d-\d\d\d/),
 })
 
-const natural_person = baseSchema.extend({
+const natural_person = schemaB.extend({
   natural_person: z.literal(true),
   type: z.discriminatedUnion("isPESEL", [
     z.object({
@@ -36,7 +45,7 @@ const natural_person = baseSchema.extend({
 })
 
 
-const not_natural_person_nip = baseSchema.extend({
+const not_natural_person_nip = schemaB.extend({
   natural_person: z.literal(false),
   NIP: z.string().length(10).regex(/^\d+$/).transform(Number),
   full_name: z.string().max(255).min(2),
