@@ -48,6 +48,7 @@ export default function TempForm() {
                 id="natural_person_true"
                 className="w-5 h-5"
                 onClick={() => setValue("natural_person", true)}
+                checked={natural_person === true}
               />
               <Label htmlFor="natural_person_true" className="text-lg">
                 Osoba fizyczna
@@ -59,6 +60,7 @@ export default function TempForm() {
                 id="natural_person_false"
                 className="w-5 h-5"
                 onClick={() => setValue("natural_person", false)}
+                checked={natural_person === false}
               />
               <Label htmlFor="natural_person_false" className="text-lg">
                 Podmiot nie będący osobą fizyczną

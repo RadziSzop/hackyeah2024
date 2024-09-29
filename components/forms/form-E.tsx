@@ -27,7 +27,21 @@ import {
 import { declarationOffices } from "@/app/types/formTypes";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 
-export default function FormA() {
+interface FormEProps {
+  register: any;
+  handleSubmit: any;
+  errors: any;
+  watch: any;
+  setValue: any;
+}
+
+export default function FormE({
+  register,
+  handleSubmit,
+  errors,
+  watch,
+  setValue,
+}: FormEProps) {
   const declarationOfficesKeys = [
     ...Object.keys(declarationOffices),
     "brak",
@@ -35,169 +49,147 @@ export default function FormA() {
 
   const [open, setOpen] = React.useState(false);
   const [value, setComboboxValue] = React.useState("");
-  type FormData = z.infer<typeof schemaE>;
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    watch,
-    setValue,
-  } = useForm<FormData>({
-    resolver: zodResolver(schemaE),
-  });
 
-  const onSubmit = (data: FormData) => console.log(data);
   const p47 = watch("p47");
 
   return (
     <div className="flex-grow  min-w-[400px] pr-4 p-6">
       <h2 className="text-2xl font-semibold mb-6 text-blue-950">Sekcja E</h2>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <div className="mb-6 space-y-6">
         <div className="mb-6">
-          <div className="mb-6">
-            <Label className="mb-2 block">47. Typ spółki</Label>
+          <Label className="mb-2 block">47. Typ spółki</Label>
 
-            <RadioGroup
-              className="flex flex-wrap gap-6"
-              defaultValue={p47 ? "spółka osobowa" : "spółka kapitałowa"}
+          <RadioGroup
+            className="flex flex-wrap gap-6"
+            defaultValue={p47 ? "spółka osobowa" : "spółka kapitałowa"}
+          >
+            <div className="flex items-center space-x-3">
+              <RadioGroupItem
+                value="terytorium RP"
+                id="p47_spolka_osobowa"
+                className="w-5 h-5"
+                onClick={() => setValue("p47", "Spółka osobowa")}
+              />
+              <Label htmlFor="p47_spolka_osobowa" className="text-lg">
+                Spółka osobowa
+              </Label>
+            </div>
+            <div className="flex items-center space-x-3">
+              <RadioGroupItem
+                value="spółka kapitałowa"
+                id="p47_spolka_kapitalowa"
+                className="w-5 h-5"
+                onClick={() => setValue("p47", "Spółka kapitałowa")}
+              />
+              <Label htmlFor="p47_spolka_kapitalowa" className="text-lg">
+                Spółka kapitałowa
+              </Label>
+            </div>
+          </RadioGroup>
+        </div>
+      </div>
+      <div className="mb-6">
+        <Label className="mb-2 block">48. Podstawa opodatkowania dotyczy</Label>
+        <Popover open={open} onOpenChange={setOpen}>
+          <PopoverTrigger asChild>
+            <Button
+              variant="outline"
+              role="combobox"
+              aria-expanded={open}
+              className="justify-between"
             >
-              <div className="flex items-center space-x-3">
-                <RadioGroupItem
-                  value="terytorium RP"
-                  id="p47_spolka_osobowa"
-                  className="w-5 h-5"
-                  onClick={() => setValue("p47", "Spółka osobowa")}
-                />
-                <Label htmlFor="p47_spolka_osobowa" className="text-lg">
-                  Spółka osobowa
-                </Label>
-              </div>
-              <div className="flex items-center space-x-3">
-                <RadioGroupItem
-                  value="spółka kapitałowa"
-                  id="p47_spolka_kapitalowa"
-                  className="w-5 h-5"
-                  onClick={() => setValue("p47", "Spółka kapitałowa")}
-                />
-                <Label htmlFor="p47_spolka_kapitalowa" className="text-lg">
-                  Spółka kapitałowa
-                </Label>
-              </div>
-            </RadioGroup>
-          </div>
-        </div>
-        <div className="mb-6">
-          <Label className="mb-2 block">
-            48. Podstawa opodatkowania dotyczy
-          </Label>
-          <Popover open={open} onOpenChange={setOpen}>
-            <PopoverTrigger asChild>
-              <Button
-                variant="outline"
-                role="combobox"
-                aria-expanded={open}
-                className="justify-between"
-              >
-                {value
-                  ? [
-                      "Zawarcia umowy spółki",
-                      "Zwiększenia majątku spółki albo podwyższenia kapitału zakładowego",
-                      "Dopłaty",
-                      "Pożyczki udzielonej spółce osobowej przez wspólnika",
-                      "Oddania spółce rzeczy lub praw majątkowych do nieodpłatnego używania",
-                      "Przekształcenia spółek",
-                      "Łączenia spółek",
-                      "Przeniesienia na terytorium Rzeczypospolitej Polskiej rzeczywistego ośrodka zarządzania spółki kapitałowej lub jej siedziby",
-                    ].find((name) => {
-                      return name === value;
-                    })
-                  : "Wybierz urząd skarbowy..."}
-                <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="p-0">
-              <Command>
-                <CommandInput placeholder="Szukaj urzędu..." />
-                <CommandList>
-                  <CommandEmpty>Nie znaleziono urzędu.</CommandEmpty>
-                  <CommandGroup>
-                    {[
-                      "Zawarcia umowy spółki",
-                      "Zwiększenia majątku spółki albo podwyższenia kapitału zakładowego",
-                      "Dopłaty",
-                      "Pożyczki udzielonej spółce osobowej przez wspólnika",
-                      "Oddania spółce rzeczy lub praw majątkowych do nieodpłatnego używania",
-                      "Przekształcenia spółek",
-                      "Łączenia spółek",
-                      "Przeniesienia na terytorium Rzeczypospolitej Polskiej rzeczywistego ośrodka zarządzania spółki kapitałowej lub jej siedziby",
-                    ].map((p48_value) => (
-                      <CommandItem
-                        key={p48_value}
-                        value={p48_value}
-                        onSelect={(currentValue) => {
-                          setComboboxValue(
-                            currentValue === value ? "" : currentValue
-                          );
-                          setOpen(false);
-                        }}
-                      >
-                        <Check
-                          className={cn(
-                            "mr-2 h-4 w-4",
-                            value === p48_value ? "opacity-100" : "opacity-0"
-                          )}
-                        />
-                        {p48_value}
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
-                </CommandList>
-              </Command>
-            </PopoverContent>
-          </Popover>
-        </div>
-        <div className="mb-6">
-          <Label className="mb-2 block">
-            49. Podstawa opodatkowania - określona zgodnie z art. 6 ust. 1 pkt 8
-            ustawy zł
-          </Label>
-          <Input
-            className={errors && "p49" in errors ? "border-red-500" : ""}
-            type="number"
-            id="p49"
-            {...register("p49")}
-          />
-          {errors.p49 && (
-            <p className="text-red-500">Wartość musi być liczbą</p>
-          )}
-        </div>
-        <div className="mb-6">
-          <Label className="mb-2 block">
-            50. Opłaty i koszty związane z zawarciem umowy spółki lub jej zmiany
-            - na podstawie art. 6 ust. 9 ustawy zł
-          </Label>
-          <Input
-            className={errors && "p50" in errors ? "border-red-500" : ""}
-            type="number"
-            id="p50"
-            {...register("p50")}
-          />
-          {errors.p50 && (
-            <p className="text-red-500">Wartość musi być liczbą</p>
-          )}
-        </div>
-        <div className="mb-6">
-          <Label className="mb-2 block">51. Podstawa obliczenia podatku</Label>
-          <Input type="number" id="p51" />
-        </div>
-        <div className="mb-6">
-          <Label className="mb-2 block">52. Kwota należnego podatku</Label>
-          <Input type="number" id="p52" />
-        </div>
-        <Button type="submit" className="mt-6">
-          Zweryfikuj
-        </Button>
-      </form>
+              {value
+                ? [
+                    "Zawarcia umowy spółki",
+                    "Zwiększenia majątku spółki albo podwyższenia kapitału zakładowego",
+                    "Dopłaty",
+                    "Pożyczki udzielonej spółce osobowej przez wspólnika",
+                    "Oddania spółce rzeczy lub praw majątkowych do nieodpłatnego używania",
+                    "Przekształcenia spółek",
+                    "Łączenia spółek",
+                    "Przeniesienia na terytorium Rzeczypospolitej Polskiej rzeczywistego ośrodka zarządzania spółki kapitałowej lub jej siedziby",
+                  ].find((name) => {
+                    return name === value;
+                  })
+                : "Wybierz urząd skarbowy..."}
+              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="p-0">
+            <Command>
+              <CommandInput placeholder="Szukaj urzędu..." />
+              <CommandList>
+                <CommandEmpty>Nie znaleziono urzędu.</CommandEmpty>
+                <CommandGroup>
+                  {[
+                    "Zawarcia umowy spółki",
+                    "Zwiększenia majątku spółki albo podwyższenia kapitału zakładowego",
+                    "Dopłaty",
+                    "Pożyczki udzielonej spółce osobowej przez wspólnika",
+                    "Oddania spółce rzeczy lub praw majątkowych do nieodpłatnego używania",
+                    "Przekształcenia spółek",
+                    "Łączenia spółek",
+                    "Przeniesienia na terytorium Rzeczypospolitej Polskiej rzeczywistego ośrodka zarządzania spółki kapitałowej lub jej siedziby",
+                  ].map((p48_value) => (
+                    <CommandItem
+                      key={p48_value}
+                      value={p48_value}
+                      onSelect={(currentValue) => {
+                        setComboboxValue(
+                          currentValue === value ? "" : currentValue
+                        );
+                        setOpen(false);
+                      }}
+                    >
+                      <Check
+                        className={cn(
+                          "mr-2 h-4 w-4",
+                          value === p48_value ? "opacity-100" : "opacity-0"
+                        )}
+                      />
+                      {p48_value}
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </CommandList>
+            </Command>
+          </PopoverContent>
+        </Popover>
+      </div>
+      <div className="mb-6">
+        <Label className="mb-2 block">
+          49. Podstawa opodatkowania - określona zgodnie z art. 6 ust. 1 pkt 8
+          ustawy zł
+        </Label>
+        <Input
+          className={errors && "p49" in errors ? "border-red-500" : ""}
+          type="number"
+          id="p49"
+          {...register("p49")}
+        />
+        {errors.p49 && <p className="text-red-500">Wartość musi być liczbą</p>}
+      </div>
+      <div className="mb-6">
+        <Label className="mb-2 block">
+          50. Opłaty i koszty związane z zawarciem umowy spółki lub jej zmiany -
+          na podstawie art. 6 ust. 9 ustawy zł
+        </Label>
+        <Input
+          className={errors && "p50" in errors ? "border-red-500" : ""}
+          type="number"
+          id="p50"
+          {...register("p50")}
+        />
+        {errors.p50 && <p className="text-red-500">Wartość musi być liczbą</p>}
+      </div>
+      <div className="mb-6">
+        <Label className="mb-2 block">51. Podstawa obliczenia podatku</Label>
+        <Input type="number" id="p51" />
+      </div>
+      <div className="mb-6">
+        <Label className="mb-2 block">52. Kwota należnego podatku</Label>
+        <Input type="number" id="p52" />
+      </div>
     </div>
   );
 }

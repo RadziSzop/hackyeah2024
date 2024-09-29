@@ -36,3 +36,19 @@ export const changeFieldText = (
 
   updateValue();
 };
+
+export const changeFieldState = (
+  field: string,
+  state: string,
+  setValue: (field: any, value: any) => void
+) => {
+  const inputElement = document.getElementById(field) as HTMLInputElement;
+  if (inputElement) {
+    inputElement.style.transform = "scale(1.05)";
+    inputElement.style.transition = "transform 0.3s ease";
+    setTimeout(() => {
+      inputElement.style.transform = "scale(1)";
+    }, 300);
+  }
+  setValue(field, state);
+};
