@@ -1,29 +1,25 @@
 import { declarationOffices } from "@/app/types/formTypes";
 import { z } from "zod";
 
-let declarationOfficesKeys = Object.keys(declarationOffices) as Array<
-  keyof typeof declarationOffices
->;
+let declarationOfficesKeys = Object.keys(declarationOffices) as Array<keyof typeof declarationOffices>;
+
+const purpose_of_action_type = z.enum(["Złożenie Deklaracji", "Korekta Deklaracji"])
 
 const schemaA_base = z.object({
-  date_of_action: z.string().date(),
-  tax_office: z.enum(declarationOfficesKeys as [string, ...string[]]),
-  purpose_of_action: z.enum([
-    "Złożenie Deklaracji",
-    "Korekta Deklaracji",
-    "brak",
-  ]),
-});
+    date_of_action: z.string().date(),
+    tax_office: z.enum(declarationOfficesKeys as [string, ...string[]]),
+    purpose_of_action: purpose_of_action_type,
+})
 
-const purpose_correction = schemaA_base.extend({
-  purpose_of_action: z.literal("Korekta Deklaracji"),
-  reason_for_correction: z.string().max(2000).optional(),
-});
+const schemaA_purpose_correction = schemaA_base.extend({
+    purpose_of_action: z.literal("Korekta Deklaracji"),
+    reason_for_correction: z.string().max(2000).optional(),
+})
 
-// const schemaA = z.discriminatedUnion("purpose_of_action", [
-//     schemaA_base,
-//     purpose_correction,
-// ])
+const schemaA = z.discriminatedUnion("purpose_of_action", [
+    schemaA_base,
+    schemaA_purpose_correction,
+])
 
 const schemaB_base = z.object({
   subject: z.enum([
@@ -48,7 +44,7 @@ const schemaB_base = z.object({
     .regex(/\d\d-\d\d\d/),
 });
 
-const natural_person = schemaB_base.extend({
+const schemaB_natural_person = schemaB_base.extend({
   natural_person: z.literal(true),
   type: z.discriminatedUnion("isPESEL", [
     z.object({
@@ -85,7 +81,7 @@ const natural_person = schemaB_base.extend({
     .min(2, "Imię matki musi mieć co najmniej 2 znaki"),
 });
 
-const not_natural_person_nip = schemaB_base.extend({
+const schemaB_not_natural_person_nip = schemaB_base.extend({
   natural_person: z.literal(false),
   NIP: z
     .string()
@@ -102,9 +98,99 @@ const not_natural_person_nip = schemaB_base.extend({
     .min(2, "Skrócona nazwa musi mieć co najmniej 2 znaki"),
 });
 
-const schema = z.discriminatedUnion("natural_person", [
-  natural_person,
-  not_natural_person_nip,
+const schemaB = z.discriminatedUnion("natural_person", [
+  schemaB_natural_person,
+  schemaB_not_natural_person_nip,
 ]);
 
-export default schema;
+export default schemaB;
+
+const schemaC = z.object({
+    subject_of_taxation: z.enum(["Umowa", "Zmiana Umowy", "Orzeczenie Sądu lub Ugoda", "Inne"]),
+    location_of_item: z.enum(["terytorium RP", "poza terytorium RP"]),
+    location_of_transaction: z.enum(["terytorium RP", "poza terytorium RP"]),
+    short_action_description: z.string().max(3500),
+})
+
+const schemaD_base = z.object({
+    type_of_transaction: z.enum(["umowa sprzedaży", "umowa zamiany", "umowa pożyczki lub depozytu nieprawidłowego, w tym zwolniona na podstawie art. 9 pkt 10 lit.b ustawy", "umowa darowizny w części dotyczącej przejęcia przez obdarowanego długów i ciężarów lub zobowiązań darczyńcy", "ustanowienie odpłatnego użytkowania, w tym nieprawidłowego", "ustanowienie hipoteki na zabezpieczenie wierzytelności istniejących", "ustanowienie hipoteki na zabezpieczenie wierzytelności o wysokości nieustalonej", "inna czynność"]),
+})
+
+const schemaD_sale = schemaD_base.extend({
+    type_of_transaction: z.literal("umowa sprzedaży"),
+    p24: z.number(),
+    p26: z.number(),
+})
+
+const schemaD_exchange = schemaD_base.extend({
+    type_of_transaction: z.literal("umowa zamiany"),
+    p28: z.number(),
+    p29: z.enum(['1', '2']),
+})
+
+const schemaD_loan = schemaD_base.extend({
+    type_of_transaction: z.literal("umowa pożyczki lub depozytu nieprawidłowego, w tym zwolniona na podstawie art. 9 pkt 10 lit.b ustawy"),
+    p31: z.number(),
+    p32: z.enum(['0', '0.5', '2', '20']),
+    
+})
+
+const schemaD_donation = schemaD_base.extend({
+    type_of_transaction: z.literal("umowa darowizny w części dotyczącej przejęcia przez obdarowanego długów i ciężarów lub zobowiązań darczyńcy"),
+    p34: z.number(),
+    p35: z.enum(['1', '2']),
+})
+
+const schemaD_rent = schemaD_base.extend({
+    type_of_transaction: z.literal("ustanowienie odpłatnego użytkowania, w tym nieprawidłowego"),
+    p37: z.number(),
+    p38: z.enum(['1', '20']),
+})
+
+const schemaD_mortgage = schemaD_base.extend({
+    type_of_transaction: z.literal("ustanowienie hipoteki na zabezpieczenie wierzytelności istniejących"),
+    p40: z.number(),
+})
+
+const schemaD_mortgage_unlimited = schemaD_base.extend({
+    type_of_transaction: z.literal("ustanowienie hipoteki na zabezpieczenie wierzytelności o wysokości nieustalonej"),
+})
+
+const schemaD_other = schemaD_base.extend({
+    type_of_transaction: z.literal("inna czynność"),
+    p43a: z.enum(["Umowa dożywocia", "Umowa o dział spadku - w części spłat lub dopłat", "Umowa o zniesienie współwłasności - w części spłat lub dopłat", "Ustanowienie odpłatnej służebności", "Orzeczenie sądu"]),
+    p43: z.number(),
+    p44: z.enum(["1", "2", "6"]),
+})
+
+const schemaD = z.discriminatedUnion("type_of_transaction", [
+    schemaD_sale,
+    schemaD_exchange,
+    schemaD_loan,
+    schemaD_donation,
+    schemaD_rent,
+    schemaD_mortgage,
+    schemaD_mortgage_unlimited,
+    schemaD_other,
+])
+
+const schemaE = z.object({
+    p47: z.enum(["Spółka osobowa", "Spółka kapitałowa"]),
+    p48: z.enum(["Zawarcia umowy spółki", "Zwiększenia majątku spółki albo podwyższenia kapitału zakładowego", "Dopłaty", "Pożyczki udzielonej spółce osobowej przez wspólnika", "Oddania spółce rzeczy lub praw majątkowych do nieodpłatnego używania", "Przekształcenia spółek", "Łączenia spółek", "Przeniesienia na terytorium Rzeczypospolitej Polskiej rzeczywistego ośrodka zarządzania spółki kapitałowej lub jej siedziby"]),
+    p49: z.number(),
+    p50: z.number(),
+})
+const schemaG = z.object({
+    additional_voivodeship: z.string().max(255).min(2).optional(),
+    additional_county: z.string().max(255).min(2).optional(),
+    additional_municipality: z.string().max(255).min(2).optional(),
+    additional_city: z.string().max(255).min(2).optional(),
+    additional_street: z.string().max(255).min(2).optional(),
+    additional_house_number: z.string().max(255).min(2).optional(),
+    additional_apartment_number: z.string().max(255).min(2).optional(),
+    additional_postal_code: z.string().length(6).regex(/\d\d-\d\d\d/).optional(),
+})
+
+const schemaH = z.object({
+    amount_of_attachments: z.number(),
+})
