@@ -49,11 +49,11 @@ export default function OldChatsSidebar() {
   const [selectedChatId, setSelectedChatId] = useState<number | null>(null);
 
   return (
-    <div className="w-64 bg-gray-100 border-r border-gray-300 h-screen">
+    <div className="w-64 bg-gray-100 border-r border-gray-300 ">
       <div className="p-4 border-b border-gray-300">
         <h2 className="text-xl font-semibold">Previous Tax Forms</h2>
       </div>
-      <ScrollArea className="h-[calc(100vh-5rem)]">
+      <ScrollArea className="h-full">
         {mockChats.map((chat) => (
           <Button
             key={chat.id}

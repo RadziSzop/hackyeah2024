@@ -28,7 +28,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Toaster />
-          <main className="min-h-screen flex flex-col items-center">
+          <main className="min-h-screen bg-gray-100 flex flex-col items-center">
             <Navbar />
             <div className="h-[calc(100vh-72px)] mt-auto w-full">
               {children}
