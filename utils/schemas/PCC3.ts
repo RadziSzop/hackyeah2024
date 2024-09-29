@@ -27,8 +27,8 @@ const schemaB_base = z.object({
     "Strona umowy zamiany",
     "Wspólnik spółki cywilnej",
     "Podmiot, o którym mowa w art. 9 pkt 10 lit. b ustawy (pożyczkobiorca)",
-    "Inny podmiot"
-]),
+    "Inny podmiot",
+  ]),
   natural_person: z.boolean(),
   isPESEL: z.boolean(),
   country: z.string().length(2),
@@ -38,8 +38,11 @@ const schemaB_base = z.object({
   street: z.string().max(255).min(2).optional(),
   house_number: z.string().max(255).min(2),
   apartment_number: z.string().max(255).min(2).optional(),
-  postal_code: z.string().length(6).regex(/\d\d-\d\d\d/),
-})
+  postal_code: z
+    .string()
+    .length(6)
+    .regex(/\d\d-\d\d\d/),
+});
 
 const schemaB_natural_person = schemaB_base.extend({
   natural_person: z.literal(true),

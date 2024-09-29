@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { askAI } from "@/app/actions";
 
 export default function Chat() {
   const [messages, setMessages] = useState([
@@ -13,10 +14,35 @@ export default function Chat() {
   ]);
   const [inputMessage, setInputMessage] = useState("");
 
-  const sendMessage = (e: React.FormEvent<HTMLFormElement>) => {
+  const sendMessage = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setMessages([...messages, { role: "user", content: inputMessage }]);
+    const newMessage = { role: "user", content: inputMessage };
+    setMessages([...messages, newMessage]);
     setInputMessage("");
+
+    // Create a FormData object to send to askAI
+    const formData = new FormData();
+    formData.append("prompt", inputMessage);
+
+    try {
+      const response = await askAI(formData);
+      if (response) {
+        // Assuming the response is an object with an 'answer' property
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { role: "assistant", content: response },
+        ]);
+      }
+    } catch (error) {
+      console.error("Error calling askAI:", error);
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        {
+          role: "assistant",
+          content: "Sorry, I encountered an error. Please try again.",
+        },
+      ]);
+    }
   };
 
   return (
