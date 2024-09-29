@@ -41,7 +41,9 @@
         <Wojewodztwo>DOLNOŚLĄSKIE</Wojewodztwo>
         <Powiat>GÓROWSKI</Powiat>
         <Gmina>GÓRA</Gmina>
+        <Ulica>FDAS</Ulica> <!-- opcjonalne -->
         <NrDomu>2137</NrDomu>
+        <NrLokalu>123</NrLokalu> <!-- opcjonalne -->
         <Miejscowosc>BRUHOWICE DOLNE</Miejscowosc>
         <KodPocztowy>21-362</KodPocztowy>
       </AdresPol>

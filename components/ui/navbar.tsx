@@ -4,6 +4,8 @@ import { HandCoins, Landmark, Wallet } from "lucide-react";
 import { signOutAction } from "@/app/actions";
 import Navlinks from "./Navlinks";
 import { createClient } from "@/utils/supabase/server";
+import Image from "next/image";
+import logo from "/app/podatkomat.gif";
 
 export default async function Navbar() {
   const supabase = createClient();
@@ -19,7 +21,8 @@ export default async function Navbar() {
             <Link href="/">
               <div className="flex items-center space-x-2">
                 <HandCoins strokeWidth={2.5} />
-                <h1 className="text-2xl font-bold">Podatkomat</h1>
+                {/* <h1 className="text-2xl font-bold">Podatkomat</h1> */}
+                <Image src={logo} alt="Podatkomat" width={200} height={200} />
               </div>
             </Link>
             <Navlinks user={user} />

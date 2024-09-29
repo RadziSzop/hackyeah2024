@@ -30,7 +30,7 @@ export default function RootLayout({
           <Toaster />
           <main className="min-h-screen flex flex-col items-center">
             <Navbar />
-            <div className="h-[calc(100vh-72px)] mt-auto w-screen">
+            <div className="h-[calc(100vh-72px)] mt-auto w-full">
               {children}
             </div>
           </main>
