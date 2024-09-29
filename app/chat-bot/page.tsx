@@ -24,10 +24,14 @@ export default async function ChatBot() {
     <>
       <div className="flex flex-col gap-4">
         <ScrollArea>
-          <FormA />
-          <FormB />
-          <FormC />
-          <FormD />
+          <div className="flex flex-col pr-10 gap-4 border-r border-gray-300">
+            <h1 className="text-3xl font-bold mt-8 text-blue-950">
+              Formularz podatkowy PCC3
+            </h1>
+            <FormA />
+            <FormB />
+            <FormC />
+          </div>
         </ScrollArea>
       </div>
       <Chat />

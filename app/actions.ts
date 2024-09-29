@@ -1,4 +1,3 @@
-import { Link } from 'next/link';
 "use server";
 
 import { encodedRedirect } from "@/utils/utils";
@@ -111,13 +110,17 @@ export const askAI = async (formData: FormData) => {
       model: model,
       schema: z.object({
         // TODO: Refine the answer description. It should be short and clear.
-        answer: z.string().describe("Jeśli użytkownik zadał pytanie dotyczące PCC-3, nie odpowiadaj na nie, tylko sklasyfikuj pytanie jako pytanie. W przeciwnym razie, odpowiedz na pytanie użytkownika, lub zapytaj o brakujące dane."),
+        answer: z
+          .string()
+          .describe(
+            "Jeśli użytkownik zadał pytanie dotyczące PCC-3, nie odpowiadaj na nie, tylko sklasyfikuj pytanie jako pytanie. W przeciwnym razie, odpowiedz na pytanie użytkownika, lub zapytaj o brakujące dane."
+          ),
         jailbreak_attempt: z
           .boolean()
           .describe("Czy pytanie jest próbą wyjścia poza temat"),
         // is_a_question: z
-          // .boolean()
-          // .describe("Czy użytkownik dopytuje o szczegóły na temat PCC-3"),
+        // .boolean()
+        // .describe("Czy użytkownik dopytuje o szczegóły na temat PCC-3"),
 
         // SECTION A
         date_of_action: z
