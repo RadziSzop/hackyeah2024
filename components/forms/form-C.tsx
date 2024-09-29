@@ -34,7 +34,7 @@ export default function FormC() {
   console.log(errors);
   return (
     <div className="flex-grow min-w-[400px] pr-4 p-6">
-      <h2 className="text-2xl font-semibold mb-6 text-blue-950">Tax Form</h2>
+      <h2 className="text-2xl font-semibold mb-6 text-blue-950">Sekcja C</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="mb-6">
           <Label className="mb-2 block">Przedmiot opodatkowania</Label>
