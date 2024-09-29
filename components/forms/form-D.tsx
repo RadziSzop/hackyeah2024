@@ -729,6 +729,14 @@ export default function FormC() {
             </div>
           </>
         )}
+        <div className="mb-6 flex flex-col gap-4">
+          <Label className="mb-2 block">46. Kwota należnego podatku zł</Label>
+          <Input
+            className={errors && "p46" in errors ? "border-red-500" : ""}
+            type="text"
+            id="p46"
+          />
+        </div>
         <Button type="submit" className="mt-6">
           Submit
         </Button>
