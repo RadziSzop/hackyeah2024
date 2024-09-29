@@ -24,6 +24,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { declarationOffices } from "@/app/types/formTypes";
+import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 
 export default function FormA() {
   const declarationOfficesKeys = [
@@ -32,13 +33,14 @@ export default function FormA() {
   ] as Array<keyof typeof declarationOffices>;
 
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
+  const [value, setComboboxValue] = React.useState("");
   type FormData = z.infer<typeof schemaA>;
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
+    setValue,
   } = useForm<FormData>({
     resolver: zodResolver(schemaA),
   });
@@ -69,14 +71,37 @@ export default function FormA() {
           </div>
           <div>
             <Label className="mb-2 block">Purpose of Action</Label>
-            <Input
-              className={
-                errors && "purpose_of_action" in errors ? "border-red-500" : ""
-              }
-              type="text"
-              id="purpose_of_action"
-              {...register("purpose_of_action")}
-            />
+            <RadioGroup
+              className="flex flex-wrap gap-6"
+              defaultValue={purpose_of_action ? "true" : "false"}
+            >
+              <div className="flex items-center space-x-3">
+                <RadioGroupItem
+                  value="true"
+                  id="purpose_of_action_true"
+                  className="w-5 h-5"
+                  onClick={() =>
+                    setValue("purpose_of_action", "Złożenie Deklaracji")
+                  }
+                />
+                <Label htmlFor="purpose_of_action_true" className="text-lg">
+                  Złożenie Deklaracji
+                </Label>
+              </div>
+              <div className="flex items-center space-x-3">
+                <RadioGroupItem
+                  value="false"
+                  id="purpose_of_action_false"
+                  className="w-5 h-5"
+                  onClick={() =>
+                    setValue("purpose_of_action", "Korekta Deklaracji")
+                  }
+                />
+                <Label htmlFor="purpose_of_action_false" className="text-lg">
+                  Korekta Deklaracji
+                </Label>
+              </div>
+            </RadioGroup>
             {errors && "purpose_of_action" in errors && (
               <p className="text-red-500 mt-1">
                 {errors.purpose_of_action?.message?.toString()}
@@ -112,7 +137,7 @@ export default function FormA() {
                           key={office[1]}
                           value={office[1]}
                           onSelect={(currentValue) => {
-                            setValue(
+                            setComboboxValue(
                               currentValue === value ? "" : currentValue
                             );
                             setOpen(false);
@@ -133,6 +158,16 @@ export default function FormA() {
               </PopoverContent>
             </Popover>
           </div>
+          {purpose_of_action === "Korekta Deklaracji" && (
+            <div>
+              <Label className="mb-2 block">Reason for Correction</Label>
+              <Input
+                type="text"
+                id="reason_for_correction"
+                {...register("reason_for_correction")}
+              />
+            </div>
+          )}
         </div>
         <Button type="submit" className="mt-6">
           Submit
