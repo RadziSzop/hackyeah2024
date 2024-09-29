@@ -34,7 +34,8 @@ const schemaB_base = z.object({
   country: z.string().length(2),
   voivodeship: z.string().max(255).min(2),
   county: z.string().max(255).min(2),
-  commune: z.string().max(255).min(2),
+  municipality: z.string().max(255).min(2),
+  city: z.string().max(255).min(2),
   street: z.string().max(255).min(2).optional(),
   house_number: z.string().max(255).min(2),
   apartment_number: z.string().max(255).min(2).optional(),
@@ -194,4 +195,4 @@ const schemaH = z.object({
     amount_of_attachments: z.number(),
 })
 
-export {schemaA, schemaB, schemaC, schemaD, schemaE, schemaG, schemaH};
+export  {schemaA, schemaB, schemaC, schemaD, schemaE, schemaG, schemaH};

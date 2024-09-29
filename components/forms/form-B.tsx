@@ -304,7 +304,124 @@ export default function TempForm() {
             </div>
           </>
         )}
-
+        <div className="mb-6">
+          <Label className="mb-2 block ">Kraj</Label>
+          <Input
+            className={errors && "country" in errors ? "border-red-500" : ""}
+            type="text"
+            id="country"
+            {...register("country")}
+          />
+          {errors && "country" in errors && (
+            <p className="text-red-500 mt-1">
+              {errors.country?.message?.toString()}
+            </p>
+          )}
+        </div>
+        <div className="mb-6">
+          <Label className="mb-2 block ">Województwo</Label>
+          <Input
+            className={
+              errors && "voivodeship" in errors ? "border-red-500" : ""
+            }
+            type="text"
+            id="voivodeship"
+            {...register("voivodeship")}
+          />
+          {errors && "voivodeship" in errors && (
+            <p className="text-red-500 mt-1">
+              {errors.voivodeship?.message?.toString()}
+            </p>
+          )}
+        </div>
+        <div className="mb-6">
+          <Label className="mb-2 block">Powiat</Label>
+          <Input
+            type="text"
+            id="county"
+            {...register("county")}
+            className={errors && "county" in errors ? "border-red-500" : ""}
+          />
+          {errors && "county" in errors && (
+            <p className="text-red-500 mt-1">
+              {errors.county?.message?.toString()}
+            </p>
+          )}
+        </div>
+        <div className="mb-6">
+          <Label className="mb-2 block">Gmina</Label>
+          <Input
+            type="text"
+            id="municipality"
+            {...register("municipality")}
+            className={
+              errors && "municipality" in errors ? "border-red-500" : ""
+            }
+          />
+          {errors && "municipality" in errors && (
+            <p className="text-red-500 mt-1">
+              {errors.municipality?.message?.toString()}
+            </p>
+          )}
+        </div>
+        <div className="mb-6">
+          <Label className="mb-2 block">Miejscowość</Label>
+          <Input
+            type="text"
+            id="city"
+            {...register("city")}
+            className={errors && "city" in errors ? "border-red-500" : ""}
+          />
+          {errors && "city" in errors && (
+            <p className="text-red-500 mt-1">
+              {errors.city?.message?.toString()}
+            </p>
+          )}
+        </div>
+        <div className="mb-6">
+          <Label className="mb-2 block">Ulica</Label>
+          <Input type="text" id="street" {...register("street")} />
+        </div>
+        <div className="mb-6">
+          <Label className="mb-2 block">Numer domu</Label>
+          <Input
+            type="text"
+            id="house_number"
+            {...register("house_number")}
+            className={
+              errors && "house_number" in errors ? "border-red-500" : ""
+            }
+          />
+          {errors && "house_number" in errors && (
+            <p className="text-red-500 mt-1">
+              {errors.house_number?.message?.toString()}
+            </p>
+          )}
+        </div>
+        <div className="mb-6">
+          <Label className="mb-2 block">Numer mieszkania</Label>
+          <Input
+            type="text"
+            id="apartment_number"
+            {...register("apartment_number")}
+          />
+        </div>
+        <div className="mb-6">
+          <Label className="mb-2 block">Kod pocztowy</Label>
+          <Input
+            type="text"
+            id="postal_code"
+            {...register("postal_code")}
+            className={
+              errors && "postal_code" in errors ? "border-red-500" : ""
+            }
+          />
+          {errors && "postal_code" in errors && (
+            <p className="text-red-500 mt-1">
+              {errors.postal_code?.message?.toString()}
+            </p>
+          )}
+        </div>
         <Button type="submit" className="mt-6">
           Zweryfikuj
         </Button>
