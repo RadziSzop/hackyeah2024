@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { askAI } from "@/app/actions";
@@ -22,6 +22,19 @@ export default function Chat() {
   ]);
   const [inputMessage, setInputMessage] = useState("");
   const [isWaiting, setIsWaiting] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop =
+        chatContainerRef.current.scrollHeight;
+    }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   const sendMessage = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -81,45 +94,47 @@ export default function Chat() {
   };
 
   return (
-    <div className="h-full max-w-[450px] bg-gray-100 p-4 rounded-lg">
-      <div className="h-full flex flex-col">
-        <div className="flex-grow overflow-auto mb-4 space-y-4 text-black">
-          {messages.map((message, index) => (
-            <div
-              key={index}
-              className={`p-2 rounded-lg ${
-                message.role === "user" ? "bg-blue-100 ml-auto" : "bg-white"
-              } max-w-[80%]`}
-            >
-              <ReactMarkdown>{message.content}</ReactMarkdown>
-            </div>
-          ))}
-          {/* {isWaiting && (
-            <div className="p-2 rounded-lg bg-white max-w-[80%]">
-              <div className="animate-pulse text-lg ml-2 tracking-[0.2rem]">
-                ...
-              </div>
-            </div>
-          )} */}
-        </div>
-        <form onSubmit={sendMessage} className="mt-auto">
-          <div className="flex space-x-2">
-            <Input
-              type="text"
-              placeholder="Napisz wiadomość..."
-              value={inputMessage}
-              onChange={(e) => setInputMessage(e.target.value)}
-              className="flex-grow"
-            />
-            <Button
-              type="submit"
-              className="bg-red-700 hover:bg-red-800 text-white"
-            >
-              Wyślij
-            </Button>
+    <div className="h-full max-w-[450px] bg-gray-100 p-4 rounded-lg flex flex-col">
+      <div
+        ref={chatContainerRef}
+        className="flex-grow overflow-auto mb-4 space-y-4 text-black"
+      >
+        {messages.map((message, index) => (
+          <div
+            key={index}
+            className={`p-2 rounded-lg ${
+              message.role === "user" ? "bg-blue-100 ml-auto" : "bg-white"
+            } max-w-[80%]`}
+          >
+            <ReactMarkdown>{message.content}</ReactMarkdown>
           </div>
-        </form>
+        ))}
+        {/* {isWaiting && (
+          <div className="p-2 rounded-lg bg-white max-w-[80%]">
+            <div className="animate-pulse text-lg ml-2 tracking-[0.2rem]">
+              ...
+            </div>
+          </div>
+        )} */}
+        <div ref={messagesEndRef} />
       </div>
+      <form onSubmit={sendMessage} className="mt-auto">
+        <div className="flex space-x-2">
+          <Input
+            type="text"
+            placeholder="Napisz wiadomość..."
+            value={inputMessage}
+            onChange={(e) => setInputMessage(e.target.value)}
+            className="flex-grow"
+          />
+          <Button
+            type="submit"
+            className="bg-red-700 hover:bg-red-800 text-white"
+          >
+            Wyślij
+          </Button>
+        </div>
+      </form>
     </div>
   );
 }
