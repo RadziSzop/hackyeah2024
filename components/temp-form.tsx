@@ -18,13 +18,20 @@ export default function TempForm() {
     formState: { errors },
     setValue,
   } = useForm<FormData>({
+    defaultValues: {
+      natural_person: false,
+      // @ts-ignore
+      type: {
+        isPESEL: false,
+      },
+    },
     resolver: zodResolver(schema),
   });
 
   const onSubmit = (data: FormData) => console.log(data);
   const natural_person = watch("natural_person");
   const isPESEL = watch("type.isPESEL");
-  console.log(natural_person);
+
   return (
     <div className="flex-grow pr-4">
       <h2 className="text-2xl font-semibold mb-4 text-blue-950">Tax Form</h2>
@@ -40,7 +47,7 @@ export default function TempForm() {
                 value="true"
                 id="natural_person_true"
                 className="w-5 h-5"
-                {...register("natural_person")}
+                onClick={() => setValue("natural_person", true)}
               />
               <Label htmlFor="natural_person_true" className="text-lg">
                 Osoba fizyczna
@@ -51,7 +58,7 @@ export default function TempForm() {
                 value="false"
                 id="natural_person_false"
                 className="w-5 h-5"
-                {...register("natural_person")}
+                onClick={() => setValue("natural_person", false)}
               />
               <Label htmlFor="natural_person_false" className="text-lg">
                 Podmiot nie będący osobą fizyczną
@@ -114,7 +121,6 @@ export default function TempForm() {
               <Label>Is PESEL</Label>
               <RadioGroup
                 className="flex gap-4"
-                {...register("type.isPESEL")}
                 defaultValue={isPESEL ? "true" : "false"}
               >
                 <div className="flex items-center space-x-3">
@@ -122,6 +128,7 @@ export default function TempForm() {
                     value="true"
                     id="isPESEL_true"
                     className="w-5 h-5"
+                    onClick={() => setValue("type.isPESEL", true)}
                   />
                   <Label htmlFor="isPESEL_true" className="text-lg">
                     PESEL
@@ -132,6 +139,7 @@ export default function TempForm() {
                     value="false"
                     id="isPESEL_false"
                     className="w-5 h-5"
+                    onClick={() => setValue("type.isPESEL", false)}
                   />
                   <Label htmlFor="isPESEL_false" className="text-lg">
                     NIP
