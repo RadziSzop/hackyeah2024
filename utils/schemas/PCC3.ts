@@ -1,24 +1,29 @@
 import { declarationOffices } from "@/app/types/formTypes";
 import { z } from "zod";
 
-let declarationOfficesKeys = Object.keys(declarationOffices) as Array<keyof typeof declarationOffices>;
-
+let declarationOfficesKeys = Object.keys(declarationOffices) as Array<
+  keyof typeof declarationOffices
+>;
 
 const schemaA_base = z.object({
-    date_of_action: z.string().date(),
-    tax_office: z.enum(declarationOfficesKeys as [string, ...string[]]),
-    purpose_of_action: z.enum(["Złożenie Deklaracji", "Korekta Deklaracji", "brak"]),
-})
+  date_of_action: z.string().date(),
+  tax_office: z.enum(declarationOfficesKeys as [string, ...string[]]),
+  purpose_of_action: z.enum([
+    "Złożenie Deklaracji",
+    "Korekta Deklaracji",
+    "brak",
+  ]),
+});
 
 const purpose_correction = schemaA_base.extend({
-    purpose_of_action: z.literal("Korekta Deklaracji"),
-    reason_for_correction: z.string().max(2000).optional(),
-})
+  purpose_of_action: z.literal("Korekta Deklaracji"),
+  reason_for_correction: z.string().max(2000).optional(),
+});
 
-const schemaA = z.discriminatedUnion("purpose_of_action", [
-    schemaA_base,
-    purpose_correction,
-])
+// const schemaA = z.discriminatedUnion("purpose_of_action", [
+//     schemaA_base,
+//     purpose_correction,
+// ])
 
 const schemaB_base = z.object({
   subject: z.enum([
@@ -26,8 +31,8 @@ const schemaB_base = z.object({
     "Strona umowy zamiany",
     "Wspólnik spółki cywilnej",
     "Podmiot, o którym mowa w art. 9 pkt 10 lit. b ustawy (pożyczkobiorca)",
-    "Inny podmiot"
-]),
+    "Inny podmiot",
+  ]),
   natural_person: z.boolean(),
   isPESEL: z.boolean(),
   country: z.string().length(2),
@@ -37,8 +42,11 @@ const schemaB_base = z.object({
   street: z.string().max(255).min(2).optional(),
   house_number: z.string().max(255).min(2),
   apartment_number: z.string().max(255).min(2).optional(),
-  postal_code: z.string().length(6).regex(/\d\d-\d\d\d/),
-})
+  postal_code: z
+    .string()
+    .length(6)
+    .regex(/\d\d-\d\d\d/),
+});
 
 const natural_person = schemaB_base.extend({
   natural_person: z.literal(true),
