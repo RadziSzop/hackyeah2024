@@ -86,7 +86,7 @@ export const askAI = async (formData: FormData) => {
     return encodedRedirect(
       "error",
       "/sign-in",
-      "You must be signed in to ask a question"
+      "Musisz być zalogowany, aby skorzystać z tej funkcji"
     );
   }
 
@@ -96,7 +96,6 @@ export const askAI = async (formData: FormData) => {
   ] as Array<keyof typeof declarationOffices>;
 
   const data = await supabase.from("help-sites").select("*");
-  console.log(data);
 
   const prompt = formData.get("prompt") as string;
   const AIsystem = `
@@ -105,7 +104,6 @@ export const askAI = async (formData: FormData) => {
   Jeśli z niej skorzystasz, daj użytkownikowi link do odpowiedniego artykułu, żeby mógł dowiedzieć się więcej.
   Baza wiedzy na temat PCC-3, oraz linki: ${data?.data?.[0].text}, link: ${data?.data?.[0].url}, ${data?.data?.[1].text}, link: ${data?.data?.[1].url}, ${data?.data?.[2].text}, link: ${data?.data?.[2].url}.
   `;
-  console.log(AIsystem);
 
   const stream = createStreamableValue();
   (async () => {
