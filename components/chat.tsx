@@ -13,12 +13,14 @@ export default function Chat() {
     },
   ]);
   const [inputMessage, setInputMessage] = useState("");
+  const [isWaiting, setIsWaiting] = useState(false);
 
   const sendMessage = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newMessage = { role: "user", content: inputMessage };
     setMessages([...messages, newMessage]);
     setInputMessage("");
+    setIsWaiting(true);
 
     // Create a FormData object to send to askAI
     const formData = new FormData();
@@ -42,6 +44,8 @@ export default function Chat() {
           content: "Sorry, I encountered an error. Please try again.",
         },
       ]);
+    } finally {
+      setIsWaiting(false);
     }
   };
 
@@ -59,6 +63,13 @@ export default function Chat() {
               {message.content}
             </div>
           ))}
+          {isWaiting && (
+            <div className="p-2 rounded-lg bg-white max-w-[80%]">
+              <div className="animate-pulse text-lg ml-2 tracking-[0.2rem]">
+                ...
+              </div>
+            </div>
+          )}
         </div>
         <form onSubmit={sendMessage} className="mt-auto">
           <div className="flex space-x-2">
