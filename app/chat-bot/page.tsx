@@ -32,6 +32,7 @@ export default async function ChatBot() {
             <FormA />
             <FormB />
             <FormC />
+            <FormD />
             <FormE />
           </div>
         </ScrollArea>

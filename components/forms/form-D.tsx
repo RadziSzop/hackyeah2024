@@ -29,7 +29,7 @@ export default function FormC() {
   console.log(p43a, p44, type_of_transaction);
   return (
     <div className="flex-grow border-r min-w-[400px] border-gray-300 pr-4 p-6">
-      <h2 className="text-2xl font-semibold mb-6 text-blue-950">Tax Form</h2>
+      <h2 className="text-2xl font-semibold mb-6 text-blue-950">Sekcja D</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="mb-6">
           <Label className="mb-2 block">Rodzaj transakcji</Label>
@@ -81,7 +81,7 @@ export default function FormC() {
                 htmlFor="subject_of_taxation_orzeczenie_sadu_lub_ugoda"
                 className="text-lg"
               >
-                umowa pożyczki lub depozytu nieprawidłowego, w tym zwolniona na
+                Umowa pożyczki lub depozytu nieprawidłowego, w tym zwolniona na
                 podstawie art. 9 pkt 10 lit.b ustawy
               </Label>
             </div>
@@ -101,7 +101,7 @@ export default function FormC() {
                 htmlFor="subject_of_taxation_darowizna"
                 className="text-lg"
               >
-                umowa darowizny w części dotyczącej przejęcia przez obdarowanego
+                Umowa darowizny w części dotyczącej przejęcia przez obdarowanego
                 długów i ciężarów lub zobowiązań darczyńcy
               </Label>
             </div>
@@ -185,7 +185,7 @@ export default function FormC() {
           <>
             <div className="mb-6 flex flex-col gap-4">
               <Label className="mb-2 block">
-                42. Inna czynność - rodzaj umowy*
+              42. Ustanowienie hipoteki na zabezpieczenie wierzytelności o wysokości nieustalonej - obliczony należny podatek zł 
               </Label>
               <Input type="text" id="p42" />
             </div>
@@ -198,7 +198,7 @@ export default function FormC() {
               <Label className="mb-2 block">
                 40. Ustanowienie hipoteki na zabezpieczenie wierzytelności o
                 wysokości nieustalonej - podstawa opodatkowania określona
-                zgodnie z art. 6 ustawy zł*
+                zgodnie z art. 6 ustawy zł
               </Label>
               <Input
                 className={errors && "p40" in errors ? "border-red-500" : ""}
@@ -216,7 +216,7 @@ export default function FormC() {
               <Label className="mb-2 block">
                 41. Ustanowienie hipoteki na zabezpieczenie wierzytelności o
                 wysokości nieustalonej - stawka podatku określona zgodnie z art.
-                7 ustawy*
+                7 ustawy
               </Label>
               <Input type="text" id="p41" />
             </div>
@@ -229,7 +229,7 @@ export default function FormC() {
             <div className="mb-6 flex flex-col gap-4">
               <Label className="mb-2 block">
                 37. Ustanowienie odpłatnego użytkowania, w tym nieprawidłowego -
-                podstawa opodatkowania określona zgodnie z art. 6 ustawy zł*
+                podstawa opodatkowania określona zgodnie z art. 6 ustawy zł
               </Label>
               <Input
                 className={errors && "p37" in errors ? "border-red-500" : ""}
@@ -246,7 +246,7 @@ export default function FormC() {
             <div className="mb-6 flex flex-col gap-4">
               <Label className="mb-2 block">
                 38. Ustanowienie odpłatnego użytkowania, w tym nieprawidłowego -
-                stawka podatku określona zgodnie z art. 7 ustawy*
+                stawka podatku określona zgodnie z art. 7 ustawy
               </Label>
               <RadioGroup className="flex flex-wrap gap-6" defaultValue={"1"}>
                 <div className="flex items-center space-x-3">
@@ -276,7 +276,7 @@ export default function FormC() {
             <div className="mb-6 flex flex-col gap-4">
               <Label className="mb-2 block">
                 39. Ustanowienie odpłatnego użytkowania, w tym nieprawidłowego -
-                obliczony należny podatek zł*
+                obliczony należny podatek zł
               </Label>
               <Input
                 className={errors && "p39" in errors ? "border-red-500" : ""}
@@ -293,7 +293,7 @@ export default function FormC() {
               <Label className="mb-2 block">
                 34. Umowa darowizny w części dotyczącej przejęcia przez
                 obdarowanego długów i ciężarów lub zobowiązań darczyńcy -
-                podstawa opodatkowania określona zgodnie z art. 6 ustawy zł*
+                podstawa opodatkowania określona zgodnie z art. 6 ustawy zł
               </Label>
               <Input
                 className={errors && "p34" in errors ? "border-red-500" : ""}
@@ -311,7 +311,7 @@ export default function FormC() {
               <Label className="mb-2 block">
                 35. Umowa darowizny w części dotyczącej przejęcia przez
                 obdarowanego długów i ciężarów lub zobowiązań darczyńcy - stawka
-                podatku określona zgodnie z art. 7 ustawy*
+                podatku określona zgodnie z art. 7 ustawy
               </Label>
               <RadioGroup className="flex flex-wrap gap-6" defaultValue={"1"}>
                 <div className="flex items-center space-x-3">
@@ -342,7 +342,7 @@ export default function FormC() {
               <Label className="mb-2 block">
                 36. Umowa darowizny w części dotyczącej przejęcia przez
                 obdarowanego długów i ciężarów lub zobowiązań darczyńcy -
-                obliczony należny podatek zł*
+                obliczony należny podatek zł
               </Label>
               <Input
                 className={errors && "p36" in errors ? "border-red-500" : ""}
@@ -359,7 +359,7 @@ export default function FormC() {
               <Label className="mb-2 block">
                 31. Umowa pożyczki lub depozytu nieprawidłowego, w tym zwolniona
                 na podstawie art. 9 pkt 10 lit.b ustawy - podstawa opodatkowania
-                określona zgodnie z art. 6 ustawy zł*
+                określona zgodnie z art. 6 ustawy zł
               </Label>
               <Input
                 className={errors && "p31" in errors ? "border-red-500" : ""}
@@ -377,7 +377,7 @@ export default function FormC() {
               <Label className="mb-2 block">
                 32. Umowa pożyczki lub depozytu nieprawidłowego, w tym zwolniona
                 na podstawie art. 9 pkt 10 lit.b ustawy - stawka podatku
-                określona zgodnie z art. 7 ustawy*
+                określona zgodnie z art. 7 ustawy
               </Label>
               <RadioGroup className="flex flex-wrap gap-6" defaultValue={"1"}>
                 <div className="flex items-center space-x-3">
@@ -388,7 +388,7 @@ export default function FormC() {
                     onClick={() => setValue("p32", "0")}
                   />
                   <Label htmlFor="p32_1" className="text-lg">
-                    1%
+                    0%
                   </Label>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -430,22 +430,12 @@ export default function FormC() {
               <Label className="mb-2 block">
                 33. Umowa pożyczki lub depozytu nieprawidłowego, w tym zwolniona
                 na podstawie art. 9 pkt 10 lit.b ustawy - obliczony należny
-                podatek zł*
+                podatek zł
               </Label>
               <Input
                 className={errors && "p33" in errors ? "border-red-500" : ""}
                 type="text"
                 id="p33"
-              />
-            </div>
-            <div className="mb-6 flex flex-col gap-4">
-              <Label className="mb-2 block">
-                46. Kwota należnego podatku zł*
-              </Label>
-              <Input
-                className={errors && "p46" in errors ? "border-red-500" : ""}
-                type="text"
-                id="p46"
               />
             </div>
           </>
@@ -455,7 +445,7 @@ export default function FormC() {
             <div className="mb-6 flex flex-col gap-4">
               <Label className="mb-2 block">
                 28. Umowa zamiany - podstawa opodatkowania określona zgodnie z
-                art. 6 ustawy zł*
+                art. 6 ustawy zł
               </Label>
               <Input
                 className={errors && "p28" in errors ? "border-red-500" : ""}
@@ -472,7 +462,7 @@ export default function FormC() {
             <div className="mb-6 flex flex-col gap-4">
               <Label className="mb-2 block">
                 29. Umowa zamiany - stawka podatku określona zgodnie z art. 7
-                ustawy*
+                ustawy
               </Label>
               <RadioGroup className="flex flex-wrap gap-6" defaultValue={"1"}>
                 <div className="flex items-center space-x-3">
@@ -501,22 +491,12 @@ export default function FormC() {
             </div>
             <div className="mb-6 flex flex-col gap-4">
               <Label className="mb-2 block">
-                30. Umowa zamiany - obliczony należny podatek zł*
+                30. Umowa zamiany - obliczony należny podatek zł
               </Label>
               <Input
                 className={errors && "p30" in errors ? "border-red-500" : ""}
                 type="text"
                 id="p30"
-              />
-            </div>
-            <div className="mb-6 flex flex-col gap-4">
-              <Label className="mb-2 block">
-                46. Kwota należnego podatku zł*
-              </Label>
-              <Input
-                className={errors && "p46" in errors ? "border-red-500" : ""}
-                type="text"
-                id="p46"
               />
             </div>
           </>
@@ -525,7 +505,7 @@ export default function FormC() {
           <>
             <div className="mb-6 flex flex-col gap-4">
               <Label className="mb-2 block">
-                Umowa sprzedaży (stawka podatku 1%) - podstawa opodatkowania
+                24. Umowa sprzedaży (stawka podatku 1%) - podstawa opodatkowania
                 określona zgodnie z art. 6 ustawy zł
               </Label>
               <Input
@@ -542,8 +522,8 @@ export default function FormC() {
             </div>
             <div className="mb-6 flex flex-col gap-4">
               <Label className="mb-2 block">
-                Umowa sprzedaży (stawka podatku 1%) - obliczony należny podatek
-                zł*
+                25. Umowa sprzedaży (stawka podatku 1%) - obliczony należny podatek
+                zł
               </Label>
               <Input
                 className={errors && "p25" in errors ? "border-red-500" : ""}
@@ -552,7 +532,7 @@ export default function FormC() {
               />
             </div>
             <div className="mb-6 flex flex-col gap-4">
-              <Label className="mb-2 block">Inna czynność cywilnoprawna</Label>
+              <Label className="mb-2 block">26. Umowa sprzedaży (stawka podatku 2%) - podstawa opodatkowania określona zgodnie z art. 6 ustawy zł</Label>
               <Input
                 className={errors && "p26" in errors ? "border-red-500" : ""}
                 type="text"
@@ -566,19 +546,11 @@ export default function FormC() {
               )}
             </div>
             <div className="mb-6 flex flex-col gap-4">
-              <Label className="mb-2 block">Inna czynność cywilnoprawna</Label>
+              <Label className="mb-2 block">27. Umowa sprzedaży (stawka podatku 2%) - obliczony należny podatek</Label>
               <Input
                 className={errors && "p27" in errors ? "border-red-500" : ""}
                 type="text"
                 id="p27"
-              />
-            </div>
-            <div className="mb-6 flex flex-col gap-4">
-              <Label className="mb-2 block">Kwota należnego podatku zł*</Label>
-              <Input
-                className={errors && "p46" in errors ? "border-red-500" : ""}
-                type="text"
-                id="p46"
               />
             </div>
           </>
@@ -684,8 +656,7 @@ export default function FormC() {
             </div>
             <div>
               <Label htmlFor="p43a" className="mb-2 block">
-                Inna czynność - podstawa opodatkowania określona zgodnie z art.
-                6 ustawy zł
+              43. Inna czynność - podstawa opodatkowania określona zgodnie z art. 6 ustawy zł
               </Label>
               <Input
                 className={errors && "p43" in errors ? "border-red-500" : ""}
@@ -747,7 +718,7 @@ export default function FormC() {
             </div>
             <div>
               <Label htmlFor="p45" className="mb-2 block">
-                Inna czynność - obliczony należny podatek zł*
+                45. Inna czynność - obliczony należny podatek
               </Label>
               <Input
                 className={errors && "p45" in errors ? "border-red-500" : ""}
@@ -755,18 +726,16 @@ export default function FormC() {
                 id="p45"
               />
             </div>
-            <div>
-              <Label htmlFor="p46" className="mb-2 block">
-                Kwota należnego podatku zł
-              </Label>
-              <Input
-                className={errors && "p46" in errors ? "border-red-500" : ""}
-                type="text"
-                id="p45"
-              />
-            </div>
           </>
         )}
+        <div className="mb-6 flex flex-col gap-4">
+          <Label className="mb-2 block">46. Kwota należnego podatku zł</Label>
+          <Input
+            className={errors && "p46" in errors ? "border-red-500" : ""}
+            type="text"
+            id="p46"
+          />
+        </div>
         <Button type="submit" className="mt-6">
           Submit
         </Button>
