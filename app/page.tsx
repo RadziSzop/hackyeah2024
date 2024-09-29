@@ -57,7 +57,7 @@ export default async function Component() {
 
         <main className="lg:w-3/4 relative">
           <div className="absolute inset-0 overflow-hidden">
-            <video
+            {/* <video
               className="w-full h-full object-cover"
               autoPlay
               loop
@@ -71,7 +71,12 @@ export default async function Component() {
                 type="video/mp4"
               />
               Twoja przeglądarka nie obsługuje tagu wideo.
-            </video>
+            </video> */}
+            <img
+              className="w-full h-full object-cover"
+              src="https://i.imgur.com/xOuBNd3.png"
+              alt="Placeholder image"
+            />
             <div className="absolute inset-0 bg-blue-950 bg-opacity-75"></div>
           </div>
 
