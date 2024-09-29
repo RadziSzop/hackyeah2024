@@ -101,7 +101,7 @@ export default function FormC() {
                 htmlFor="subject_of_taxation_darowizna"
                 className="text-lg"
               >
-                umowa darowizny w części dotyczącej przejęcia przez obdarowanego
+                Umowa darowizny w części dotyczącej przejęcia przez obdarowanego
                 długów i ciężarów lub zobowiązań darczyńcy
               </Label>
             </div>
@@ -185,7 +185,7 @@ export default function FormC() {
           <>
             <div className="mb-6 flex flex-col gap-4">
               <Label className="mb-2 block">
-                42. Inna czynność - rodzaj umowy
+              42. Ustanowienie hipoteki na zabezpieczenie wierzytelności o wysokości nieustalonej - obliczony należny podatek zł 
               </Label>
               <Input type="text" id="p42" />
             </div>
@@ -388,7 +388,7 @@ export default function FormC() {
                     onClick={() => setValue("p32", "0")}
                   />
                   <Label htmlFor="p32_1" className="text-lg">
-                    1%
+                    0%
                   </Label>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -505,7 +505,7 @@ export default function FormC() {
           <>
             <div className="mb-6 flex flex-col gap-4">
               <Label className="mb-2 block">
-                Umowa sprzedaży (stawka podatku 1%) - podstawa opodatkowania
+                24. Umowa sprzedaży (stawka podatku 1%) - podstawa opodatkowania
                 określona zgodnie z art. 6 ustawy zł
               </Label>
               <Input
@@ -522,7 +522,7 @@ export default function FormC() {
             </div>
             <div className="mb-6 flex flex-col gap-4">
               <Label className="mb-2 block">
-                Umowa sprzedaży (stawka podatku 1%) - obliczony należny podatek
+                25. Umowa sprzedaży (stawka podatku 1%) - obliczony należny podatek
                 zł
               </Label>
               <Input
@@ -532,7 +532,7 @@ export default function FormC() {
               />
             </div>
             <div className="mb-6 flex flex-col gap-4">
-              <Label className="mb-2 block">Umowa sprzedaży (stawka podatku 2%) - podstawa opodatkowania określona zgodnie z art. 6 ustawy zł</Label>
+              <Label className="mb-2 block">26. Umowa sprzedaży (stawka podatku 2%) - podstawa opodatkowania określona zgodnie z art. 6 ustawy zł</Label>
               <Input
                 className={errors && "p26" in errors ? "border-red-500" : ""}
                 type="text"
@@ -546,7 +546,7 @@ export default function FormC() {
               )}
             </div>
             <div className="mb-6 flex flex-col gap-4">
-              <Label className="mb-2 block">Inna czynność cywilnoprawna</Label>
+              <Label className="mb-2 block">27. Umowa sprzedaży (stawka podatku 2%) - obliczony należny podatek</Label>
               <Input
                 className={errors && "p27" in errors ? "border-red-500" : ""}
                 type="text"
@@ -656,8 +656,7 @@ export default function FormC() {
             </div>
             <div>
               <Label htmlFor="p43a" className="mb-2 block">
-                Inna czynność - podstawa opodatkowania określona zgodnie z art.
-                6 ustawy zł
+              43. Inna czynność - podstawa opodatkowania określona zgodnie z art. 6 ustawy zł
               </Label>
               <Input
                 className={errors && "p43" in errors ? "border-red-500" : ""}
@@ -719,7 +718,7 @@ export default function FormC() {
             </div>
             <div>
               <Label htmlFor="p45" className="mb-2 block">
-                Inna czynność - obliczony należny podatek zł
+                45. Inna czynność - obliczony należny podatek
               </Label>
               <Input
                 className={errors && "p45" in errors ? "border-red-500" : ""}
